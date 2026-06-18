@@ -357,6 +357,19 @@ export default function HomePage() {
                           transition: 'var(--transition-smooth)'
                         }}
                       />
+                    ) : p.id === 'greenlume' ? (
+                      <img
+                        src="/greenlume_10.jpg"
+                        alt={p.title}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center',
+                          transform: hoveredProject === p.id ? 'scale(1.05)' : 'scale(1)',
+                          transition: 'var(--transition-smooth)'
+                        }}
+                      />
                     ) : p.id === 'real-estate-os' ? (
                       <img
                         src="/re_macbook.jpeg"
@@ -450,6 +463,19 @@ export default function HomePage() {
                     {p.id === 'aunty-elewa' ? (
                       <img
                         src="/elewa_screenshot_1.png"
+                        alt={p.title}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center',
+                          transform: hoveredProject === p.id ? 'scale(1.05)' : 'scale(1)',
+                          transition: 'var(--transition-smooth)'
+                        }}
+                      />
+                    ) : p.id === 'greenlume' ? (
+                      <img
+                        src="/greenlume_10.jpg"
                         alt={p.title}
                         style={{
                           width: '100%',

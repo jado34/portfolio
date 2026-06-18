@@ -134,8 +134,8 @@ export default function CaseStudyPage() {
           background: project.gradient,
           borderRadius: '32px',
           border: '1px solid var(--border-light)',
-          padding: (project.id === 'aunty-elewa' || project.id === 'real-estate-os') ? '4rem 2rem' : undefined,
-          height: (project.id === 'aunty-elewa' || project.id === 'real-estate-os') ? 'auto' : '480px',
+          padding: (project.id === 'aunty-elewa' || project.id === 'real-estate-os' || project.id === 'greenlume') ? '4rem 2rem' : undefined,
+          height: (project.id === 'aunty-elewa' || project.id === 'real-estate-os' || project.id === 'greenlume') ? 'auto' : '480px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -232,6 +232,42 @@ export default function CaseStudyPage() {
                   filter: 'drop-shadow(0 20px 48px rgba(18, 18, 18, 0.08))'
                 }}
               />
+            </div>
+          ) : project.id === 'greenlume' ? (
+            <div style={{
+              display: 'flex',
+              gap: '1.5rem',
+              overflowX: 'auto',
+              width: '100%',
+              padding: '2rem 1.5rem',
+              scrollbarWidth: 'thin',
+            }}>
+              {[
+                { src: '/greenlume_1.jpg', alt: 'GreenLume App 1' },
+                { src: '/greenlume_2.jpg', alt: 'GreenLume App 2' },
+                { src: '/greenlume_3.jpg', alt: 'GreenLume App 3' },
+                { src: '/greenlume_4.jpg', alt: 'GreenLume App 4' },
+                { src: '/greenlume_5.jpg', alt: 'GreenLume App 5' },
+                { src: '/greenlume_6.jpg', alt: 'GreenLume App 6' },
+                { src: '/greenlume_7.jpg', alt: 'GreenLume App 7' },
+                { src: '/greenlume_8.jpg', alt: 'GreenLume App 8' },
+                { src: '/greenlume_9.jpg', alt: 'GreenLume App 9' },
+                { src: '/greenlume_10.jpg', alt: 'GreenLume App 10' }
+              ].map((img, i) => (
+                <img
+                  key={i}
+                  src={img.src}
+                  alt={img.alt}
+                  style={{
+                    height: '420px',
+                    width: 'auto',
+                    borderRadius: '24px',
+                    boxShadow: '0 12px 36px rgba(0, 0, 0, 0.25)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    flexShrink: 0
+                  }}
+                />
+              ))}
             </div>
           ) : (
             <ProjectVisual type={project.visualType} isHovered={true} />
@@ -354,6 +390,89 @@ export default function CaseStudyPage() {
           </div>
         )}
 
+        {/* Detailed Case Study Sections (GreenLume specific) */}
+        {project.id === 'greenlume' && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE BRIEF</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                I didn't start with a finished interaction spec. I started with a pitch deck — the investor kind, full of confident lines like "we're building a behavior-change engine" — and a set of mockups that showed what the screens should look like. What they didn't show was what should happen in the gaps between those screens: the moments a static frame can't capture, like what happens when a user hesitates, backs out, or hits a flow that doesn't have an obvious next step.
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                That gap is where a lot of my actual work lived. Building this wasn't just translating pixels into components. It was constantly answering a question the mockups left open: <em>what does this actually feel like to use, and what happens when it doesn't go perfectly?</em>
+              </p>
+            </div>
+
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE MOMENT IT GOT REAL</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                The first time I sat down with the spec, the gamification looked almost cute. Tap an action, get points. Easy, right?
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                Then I mapped out what one tap on "Plant-Based Meal" actually needed to <em>do</em> — update today's points, nudge the streak, tick a weekly challenge, check level thresholds, and possibly pause for photo verification first — and the cute feeling evaporated. One tap, five systems, all needing to agree with each other.
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                That's also where my first real design decision showed up, not just an engineering one: should each of those five things happen the instant you tap, or should the user get a chance to see what they're about to commit to first? I chose the second. The log flow lets someone multi-select several actions and watch a live points preview tally up — "Earn +20 🌱 & +1 💧" — before anything actually saves.
+              </p>
+            </div>
+
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE DECISION THE MOCKUP DIDN'T MAKE</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                Here's the clearest example of where design thinking happened at the build layer instead of in a design file: photo verification. The mockup showed the modal — camera icon, "Take Photo," "Choose from Library." What it didn't show was what happens when someone doesn't have a photo to give.
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                I chose to make verification optional by adding a secondary "Save without Proof" button. A habit-tracking app dies the moment logging feels like homework. If someone has to dig out their phone, find the right angle, and snap a photo every single time they want credit for taking the bus, most people stop logging by day three. Frequency of logging matters more than proof of logging, at least in this phase of the product.
+              </p>
+            </div>
+
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE NURSERY GARDEN MECHANICS</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                The Nursery had the same kind of gap. The mockup showed coins, water drops, seeds, and two plant slots — the pieces, not the rules. I built a 24-hour window before a planted seed starts visibly thirsting, and a 48-hour ceiling before it withers entirely.
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                Neglect must have a real consequence. A plant that can't die isn't a pet, it's a progress bar wearing a costume. The drought warning needed to feel urgent so skipping a few days actually registers as a loss. This required coins, water, and points to run on separate rules and sync correctly from the same action log in real time.
+              </p>
+            </div>
+
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THREE SCREENS, ONE TRUTH</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                Home shows your level. Badges shows your level. The Nursery shows your level. If those three ever disagree — even briefly — the whole illusion of a living, trustworthy app cracks. Users don't file a bug report; they just stop trusting the numbers. So Seedling, Sprout, Sapling, and Tree levels had to live in exactly one relational schema and read identically everywhere.
+              </p>
+            </div>
+
+            <div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>WORLD OUTSIDE THE APP</h4>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+                The custom action builder hands the user a blank slate — name it, categorize it, set the points, watch a live preview update as you type. Custom actions run through the exact same scoring pipeline as standard ones.
+              </p>
+              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+                The Local Eco-Map calculates real distance to nearby recycling hubs and hands off to the device's native maps app. The "Log Action" button on a map pin routes back into the same logging flow, because walking to a hub and logging an action both represent "I did something good today."
+              </p>
+            </div>
+
+            <div style={{ gridColumn: 'span 2', background: '#FFFFFF', border: '1.5px solid var(--border-light)', borderRadius: '24px', padding: '3rem', marginTop: '2rem', boxShadow: '0 8px 32px rgba(18,18,18,0.01)' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--text-charcoal)' }}>BUSINESS & PRODUCT TRANSFORMATION</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+                <div>
+                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Habit Preservation</h5>
+                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>By keeping proof optional, user daily logging frequency remains high, avoiding cart-style logging friction.</p>
+                </div>
+                <div>
+                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Consequential Gamification</h5>
+                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Introducing plant wilting and water decay schedules drove real behavioral accountability.</p>
+                </div>
+                <div>
+                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Supabase Real-time Sync</h5>
+                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Real-time updates resolved the three-screens-one-truth data sync problem cleanly across screens.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Large Editorial Quotation block from the client */}
         <div style={{
           borderLeft: '4px solid var(--accent-rust)',
@@ -373,7 +492,9 @@ export default function CaseStudyPage() {
               ? "We didn't build a dashboard. We built the place where a real estate business is run. It replaces a dozen context switches with one confident, high-fidelity surface."
               : project.id === 'aunty-elewa'
                 ? "The plate builder completely solved the complexity of Nigerian food ordering. It turned a messy WhatsApp conversation into a delightful, 45-second checkout experience."
-                : "Blaze Designs helped us build a consistent design language and a fast, responsive user interface. Our development team can now ship features faster with zero design alignment issues."
+                : project.id === 'greenlume'
+                  ? "The actual design thinking happened in the spaces between the frames — deciding what a hesitation should feel like, what an escape hatch should look like, and what a dying plant should communicate."
+                  : "Blaze Designs helped us build a consistent design language and a fast, responsive user interface. Our development team can now ship features faster with zero design alignment issues."
             }
           </p>
           <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: 'var(--text-grey)' }}>
@@ -381,7 +502,9 @@ export default function CaseStudyPage() {
               ? "— Managing Partner, Real Estate Operations Group"
               : project.id === 'aunty-elewa'
                 ? "— CEO, Aunty Elewa Catering"
-                : "— Product Lead, Design & Engineering Systems"
+                : project.id === 'greenlume'
+                  ? "— Product UX Lead, GreenLume Development"
+                  : "— Product Lead, Design & Engineering Systems"
             }
           </span>
         </div>

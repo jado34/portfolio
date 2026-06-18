@@ -13,15 +13,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'tokens-pipeline',
-    title: 'Figma to Code Design System',
-    role: 'Product Designer & Frontend Developer',
-    description: 'Setting up shared design libraries in Figma and automatically converting design variables into production-ready React styles.',
-    longDescription: 'Created an automated system that extracts colors, spacing, typography, and theme tokens directly from Figma design files and translates them into CSS custom properties and React components. This keeps the design and codebase in perfect sync, reducing manual handoff time from hours to seconds.',
-    tags: ['Figma', 'React', 'CSS Variables', 'Design Systems', 'JavaScript'],
+    id: 'greenlume',
+    title: 'GreenLume Mobile App',
+    role: 'React Native & Mobile UX Developer',
+    description: 'A React Native and Supabase habit tracker app designed to turn personal sustainability actions into daily rewarding habits.',
+    longDescription: 'Engineered the mobile experience behind a personal sustainability habit tracker app. Built real-time gamified tracking loops, photo verification logic, and a dynamic plant growth nursery using React Native, Expo, and Supabase.',
+    tags: ['React Native', 'Expo', 'Supabase', 'Mobile Dev', 'UX Decisions'],
     year: '2025',
-    gradient: '#FAF3EE',
-    visualType: 'tokens',
+    gradient: 'linear-gradient(135deg, #102a1e 0%, #1c4532 100%)',
+    visualType: 'audit',
     needId: 'design-tokens'
   },
   {
