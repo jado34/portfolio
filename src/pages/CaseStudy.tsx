@@ -44,7 +44,7 @@ export default function CaseStudyPage() {
         </div>
 
         {/* Case Study Meta Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '5rem', margin: '3rem 0' }}>
+        <div className="casestudy-meta-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '5rem', margin: '3rem 0' }}>
 
           {/* Left Column: Heading & Description */}
           <div>
@@ -276,7 +276,7 @@ export default function CaseStudyPage() {
 
         {/* Detailed Case Study Sections (Real Estate OS specific) */}
         {project.id === 'real-estate-os' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
+          <div className="casestudy-sections-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE PROBLEM</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
@@ -334,7 +334,7 @@ export default function CaseStudyPage() {
 
         {/* Detailed Case Study Sections (Aunty Elewa specific) */}
         {project.id === 'aunty-elewa' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
+          <div className="casestudy-sections-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE PROBLEM</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
@@ -392,7 +392,7 @@ export default function CaseStudyPage() {
 
         {/* Detailed Case Study Sections (GreenLume specific) */}
         {project.id === 'greenlume' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
+          <div className="casestudy-sections-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE BRIEF</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>

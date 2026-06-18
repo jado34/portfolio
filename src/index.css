@@ -415,3 +415,94 @@ ul {
   100% { transform: translateX(0); }
 }
 
+/* ─── Global Responsive Utilities ─────────────────────────────── */
+
+/* About page grid */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .about-caps-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .about-caps-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Services page header grid */
+@media (max-width: 992px) {
+  .services-header-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .services-header-grid .services-laptop-widget {
+    display: none !important;
+  }
+  .services-slide-card {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+    min-height: auto !important;
+  }
+  .services-slide-animation {
+    height: 200px !important;
+  }
+  .services-process-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Home page philosophy section grid */
+@media (max-width: 992px) {
+  .home-philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .home-caps-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .home-caps-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .home-work-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* Case Study page grid */
+@media (max-width: 992px) {
+  .casestudy-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .casestudy-sections-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .casestudy-sections-grid [style*="gridColumn: 'span 2'"],
+  .casestudy-sections-grid [style*="grid-column: span 2"] {
+    grid-column: span 1 !important;
+  }
+  .casestudy-impact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .casestudy-meta-grid {
+    margin: 1.5rem 0 !important;
+  }
+}

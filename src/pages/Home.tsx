@@ -287,7 +287,7 @@ export default function HomePage() {
         }}
       >
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '6rem' }}>
+          <div className="home-work-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '6rem' }}>
             <div>
               <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-rust)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
                 Case Studies
@@ -539,7 +539,7 @@ export default function HomePage() {
 
       {/* ─── Philosophy Overview Credentials Section ────────────────── */}
       <section style={{ padding: '8rem 0', background: '#FFFFFF' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '6rem' }}>
+        <div className="container home-philosophy-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '6rem' }}>
           <div>
             <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-rust)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
               Philosophy & Focus
@@ -556,7 +556,7 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+            <div className="home-caps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
               {[
                 { icon: <Layout size={20} />, title: 'Product Designer Design', text: 'Designing clean, interactive interfaces using Figma and Framer that put users first.' },
                 { icon: <Cpu size={20} />, title: 'Frontend Development', text: 'Building fast, responsive web apps using modern tools like React, TypeScript, and CSS/HTML.' },

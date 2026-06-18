@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
 
         {/* Core Layout Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: '5rem', alignItems: 'flex-start' }}>
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: '5rem', alignItems: 'flex-start' }}>
 
           {/* Left Column: Image and statement */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -135,7 +135,7 @@ export default function AboutPage() {
             </div>
 
             {/* Matrix of capabilities */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="about-caps-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
               {[
                 { icon: <Layout size={18} />, title: 'Systems & Design Tokens', text: 'Architecting unified token pipelines linking design configurations directly to React/CSS variables.' },
                 { icon: <Settings size={18} />, title: 'Zero-Friction Flows', text: 'Designing custom single-page user workspaces that minimize clicks and maximize action.' },

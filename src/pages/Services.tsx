@@ -86,7 +86,7 @@ export default function ServicesPage() {
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'flex-end' }}>
+          <div className="services-header-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'flex-end' }}>
             <h1 style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
@@ -100,7 +100,7 @@ export default function ServicesPage() {
             </h1>
 
             {/* Smiling laptop Lottie/SVG widget (Screenshot 1 bottom right illustration) */}
-            <div style={{ width: '160px', height: '140px', justifySelf: 'flex-end' }}>
+            <div className="services-laptop-widget" style={{ width: '160px', height: '140px', justifySelf: 'flex-end' }}>
               <LottieAnimation type="laptop" />
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function ServicesPage() {
       <section style={{ padding: '8rem 0', background: 'var(--bg-paper)' }}>
         <div className="container">
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem' }}>
+          <div className="services-process-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem' }}>
             <div>
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--text-muted)' }}>
                 HOW I WORK
@@ -166,7 +166,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Active slide card */}
-          <div style={{
+          <div className="services-slide-card" style={{
             background: activeSlide.bgColor,
             color: activeSlide.textColor,
             borderRadius: '32px',
@@ -194,7 +194,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Slide Lottie/SVG Animation */}
-            <div style={{
+            <div className="services-slide-animation" style={{
               width: '100%',
               height: '320px',
               display: 'flex',
