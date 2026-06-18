@@ -13,11 +13,34 @@ export default function ContactPage() {
     }
 
     setSubmitStatus('sending');
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', project: '', message: '' });
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }, 1200);
+
+    fetch('https://formspree.io/designsbyblaze1@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        project: formData.project,
+        message: formData.message
+      })
+    })
+      .then((response) => {
+        if (response.ok) {
+          setSubmitStatus('success');
+          setFormData({ name: '', email: '', project: '', message: '' });
+          setTimeout(() => setSubmitStatus('idle'), 3000);
+        } else {
+          setSubmitStatus('error');
+          setTimeout(() => setSubmitStatus('idle'), 2500);
+        }
+      })
+      .catch(() => {
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus('idle'), 2500);
+      });
   };
 
   return (
