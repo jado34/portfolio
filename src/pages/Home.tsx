@@ -93,7 +93,8 @@ export default function HomePage() {
           cursor: 'default',
         }}
       >
-        <style dangerouslySetInnerHTML={{__html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @keyframes float-slow-1 {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -159,9 +160,9 @@ export default function HomePage() {
               width: 80px !important;
             }
             .collage-item-greenlume2 {
-              left: 2% !important;
-              top: 68% !important;
-              width: 80px !important;
+              left: 10% !important;
+              top: 32% !important;
+              width: 130px !important;
             }
             .collage-cursor-tag {
               display: none !important;
@@ -219,7 +220,7 @@ export default function HomePage() {
             { id: 2, className: 'collage-item-iphone17', src: '/iphone17_mockup.jpeg', style: { right: '4%', top: '10%', width: '290px' }, rotate: 6, borderRadius: '28px', factor: 16, zIndex: 9 },
             { id: 4, className: 'collage-item-wallet', src: '/s26_mockup.png', style: { left: '26%', top: '42%', width: '220px' }, rotate: 8, isContain: true, factor: 8, zIndex: 15 },
             { id: 6, className: 'collage-item-class9', src: '/class_9.png', style: { left: '70%', top: '36%', width: '320px' }, rotate: -2, isContain: true, factor: 22, zIndex: 12 },
-            { id: 7, className: 'collage-item-isometric', src: '/s26_isometric.png', style: { left: '4%', top: '52%', width: '220px' }, rotate: -15, isContain: true, factor: -10, zIndex: 6 },
+            { id: 7, className: 'collage-item-isometric', src: '/s26_isometric.png', style: { left: '14%', top: '58%', width: '220px' }, rotate: -15, isContain: true, factor: -10, zIndex: 6 },
             { id: 8, className: 'collage-item-groceries', src: '/groceries_1.png', style: { left: '48%', top: '44%', width: '260px' }, rotate: -4, borderRadius: '16px', factor: -12, zIndex: 10 },
             { id: 9, className: 'collage-item-greenlume1', src: '/greenlume_10.jpg', style: { right: '-1%', top: '48%', width: '190px' }, rotate: 8, borderRadius: '24px', factor: 14, zIndex: 8 },
             { id: 10, className: 'collage-item-greenlume2', src: '/greenlume_1.jpg', style: { left: '-1%', top: '30%', width: '180px' }, rotate: -10, borderRadius: '24px', factor: -10, zIndex: 14 }
@@ -547,7 +548,7 @@ export default function HomePage() {
               CREATING BEAUTIFUL DESIGNS AND SOLID CODE
             </h2>
             <p style={{ color: 'var(--text-grey)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1.5rem', fontWeight: 300 }}>
-              Under the banner of **BLAZE DESIGNS**, I focus on creating interfaces that are not only beautiful but also highly functional. By balancing user-centric design with clean, reliable code, I make sure the products I build deliver great user experiences and run smoothly.
+              Under the banner of BLAZE DESIGNS, I focus on creating interfaces that are not only beautiful but also highly functional. By balancing user-centric design with clean, reliable code, I make sure the products I build deliver great user experiences and run smoothly.
             </p>
             <p style={{ color: 'var(--text-grey)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1.5rem', fontWeight: 300 }}>
               I believe a great product must both look good and perform well. Whether designing layouts in Figma or coding in TypeScript, JavaScript, and HTML/CSS, I pay close attention to the details to ensure every layout is responsive, fast, and easy to use.
