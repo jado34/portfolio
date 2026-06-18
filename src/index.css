@@ -417,8 +417,16 @@ ul {
 
 /* ─── Global Responsive Utilities ─────────────────────────────── */
 
-/* About page grid */
+/* Ensure text never overflows on narrow screens */
+p, h1, h2, h3, h4, h5, li, span, a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── Tablet (≤ 992px) ──────────────────────────────────────────── */
 @media (max-width: 992px) {
+
+  /* About page */
   .about-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
@@ -427,20 +435,13 @@ ul {
     grid-template-columns: 1fr 1fr !important;
     gap: 1rem !important;
   }
-}
-@media (max-width: 480px) {
-  .about-caps-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
-/* Services page header grid */
-@media (max-width: 992px) {
+  /* Services page */
   .services-header-grid {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
-  .services-header-grid .services-laptop-widget {
+  .services-laptop-widget {
     display: none !important;
   }
   .services-slide-card {
@@ -457,10 +458,8 @@ ul {
     align-items: flex-start !important;
     gap: 1.5rem !important;
   }
-}
 
-/* Home page philosophy section grid */
-@media (max-width: 992px) {
+  /* Home philosophy section */
   .home-philosophy-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
@@ -469,8 +468,44 @@ ul {
     grid-template-columns: 1fr 1fr !important;
     gap: 1rem !important;
   }
+
+  /* Case Study grids */
+  .casestudy-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    margin: 1.5rem 0 !important;
+  }
+  .casestudy-sections-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .casestudy-impact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Reduce heavy section padding on tablets */
+  section[style*="padding: '8rem 0'"],
+  section[style*='padding: "8rem 0"'] {
+    padding: 5rem 0 !important;
+  }
 }
-@media (max-width: 480px) {
+
+/* ── Mobile (≤ 640px) ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Collage showcase: shrink fixed height on phones */
+  .collage-showcase-container {
+    height: 420px !important;
+    padding: 1.5rem 0 !important;
+  }
+
+  /* About caps: single column */
+  .about-caps-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Home caps: single column */
   .home-caps-grid {
     grid-template-columns: 1fr !important;
   }
@@ -480,29 +515,36 @@ ul {
     gap: 1rem !important;
     margin-bottom: 3rem !important;
   }
+
+  /* Services section padding */
+  .services-slide-card {
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+  }
+
+  /* Reduce hero padding so headline isn't clipped */
+  #hero {
+    padding-top: 110px !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Large CTA section */
+  section[style*="padding: '8rem 0'"] {
+    padding: 4rem 0 !important;
+  }
+
+  /* Work section top padding */
+  #work {
+    padding: 4rem 0 !important;
+  }
 }
 
-/* Case Study page grid */
-@media (max-width: 992px) {
-  .casestudy-meta-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+/* ── Small phones (≤ 400px) ────────────────────────────────────── */
+@media (max-width: 400px) {
+  .container {
+    padding: 0 1rem !important;
   }
-  .casestudy-sections-grid {
-    grid-template-columns: 1fr !important;
-    gap: 3rem !important;
-  }
-  .casestudy-sections-grid [style*="gridColumn: 'span 2'"],
-  .casestudy-sections-grid [style*="grid-column: span 2"] {
-    grid-column: span 1 !important;
-  }
-  .casestudy-impact-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-  }
-}
-@media (max-width: 768px) {
-  .casestudy-meta-grid {
-    margin: 1.5rem 0 !important;
+  .collage-showcase-container {
+    height: 320px !important;
   }
 }

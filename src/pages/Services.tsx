@@ -60,13 +60,20 @@ export default function ServicesPage() {
 
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '90px' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 640px) {
+          .services-page-header-section { padding: 2rem 0 !important; }
+          .services-page-header-section .services-info-bar { margin-bottom: 2rem !important; }
+          .services-process-section { padding: 4rem 0 !important; }
+        }
+      `}} />
 
       {/* ─── Page Header / Title (Screenshot 1 & 2 layout) ────────── */}
-      <section style={{ padding: '4rem 0', position: 'relative' }}>
+      <section className="services-page-header-section" style={{ padding: '4rem 0', position: 'relative' }}>
         <div className="container" style={{ position: 'relative' }}>
 
           {/* Top services nav header info */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem' }}>
+          <div className="services-info-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem' }}>
             <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-grey)' }}>
               Services / Studio Matrix
             </span>
@@ -112,7 +119,7 @@ export default function ServicesPage() {
       <NeedsSelector activeNeed={activeNeed} onSelectNeed={(id) => setActiveNeed(id)} />
 
       {/* ─── Process Slides Carousel Section (Screenshots 3, 4, 5) ──────── */}
-      <section style={{ padding: '8rem 0', background: 'var(--bg-paper)' }}>
+      <section className="services-process-section" style={{ padding: '8rem 0', background: 'var(--bg-paper)' }}>
         <div className="container">
 
           <div className="services-process-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem' }}>

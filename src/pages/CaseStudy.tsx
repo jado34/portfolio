@@ -19,10 +19,26 @@ export default function CaseStudyPage() {
 
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '90px', paddingBottom: '8rem' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 992px) {
+          .casestudy-hero-img { height: 360px !important; }
+          .casestudy-screenshots-rail { gap: 1rem !important; }
+          .casestudy-screenshots-rail img { width: 220px !important; height: 380px !important; }
+          .casestudy-sections-grid { margin: 3rem 0 !important; }
+          .casestudy-impact-row { flex-direction: column !important; gap: 1.5rem !important; }
+        }
+        @media (max-width: 640px) {
+          .casestudy-hero-img { height: 240px !important; border-radius: 16px !important; }
+          .casestudy-screenshots-rail img { width: 160px !important; height: 280px !important; }
+          .casestudy-sections-grid { margin: 2rem 0 !important; gap: 2rem !important; }
+          .casestudy-back-bar { padding: 1.25rem 0 !important; }
+          .casestudy-back-bar span { font-size: 10px !important; }
+        }
+      `}} />
       <div className="container">
 
         {/* Header Close Nav */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2.5rem 0' }}>
+        <div className="casestudy-back-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2.5rem 0' }}>
           <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--text-grey)', letterSpacing: '0.05em' }}>
             <ArrowLeft size={14} /> Back to work index
           </Link>
@@ -130,7 +146,7 @@ export default function CaseStudyPage() {
         </div>
 
         {/* Visual Showcase Center block */}
-        <div style={{
+        <div className="casestudy-hero-img" style={{
           background: project.gradient,
           borderRadius: '32px',
           border: '1px solid var(--border-light)',

@@ -70,12 +70,32 @@ export default function NeedsSelector({ activeNeed, onSelectNeed }: NeedsSelecto
 
   return (
     <section id="services" style={{ padding: '8rem 0', background: 'var(--bg-card)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 992px) {
+          .needs-selector-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .needs-quote-card {
+            padding: 1.75rem !important;
+          }
+          .needs-quote-text {
+            font-size: 1.05rem !important;
+          }
+          .needs-chat-ui {
+            min-height: auto !important;
+          }
+          .needs-chat-title {
+            font-size: 2rem !important;
+          }
+        }
+      `}} />
+      <div className="container needs-selector-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
 
         {/* Left Column: Client Quote (Screenshot 2 styling) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-          <div style={{
+          <div className="needs-quote-card" style={{
             background: '#EBF9FA',
             padding: '3rem',
             borderRadius: '24px',
@@ -97,10 +117,10 @@ export default function NeedsSelector({ activeNeed, onSelectNeed }: NeedsSelecto
               pointerEvents: 'none',
               opacity: 0.15
             }}>
-              “
+              "
             </span>
 
-            <p style={{
+            <p className="needs-quote-text" style={{
               fontFamily: 'var(--font-body)',
               fontSize: '1.25rem',
               lineHeight: '1.7',
@@ -137,11 +157,11 @@ export default function NeedsSelector({ activeNeed, onSelectNeed }: NeedsSelecto
         {/* Right Column: Conversational Chat UI (Screenshots 2 & 3 styling) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-charcoal)' }}>
+          <h3 className="needs-chat-title" style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-charcoal)' }}>
             How can we help you?
           </h3>
 
-          <div style={{
+          <div className="needs-chat-ui" style={{
             background: '#FAF8F5',
             border: '1.5px solid var(--border-light)',
             borderRadius: '24px',
