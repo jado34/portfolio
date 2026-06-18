@@ -45,7 +45,18 @@ export default function ContactPage() {
 
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '120px', paddingBottom: '8rem' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 992px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 4rem !important;
+          }
+          .contact-form-container {
+            padding: 1.5rem !important;
+          }
+        }
+      `}} />
+      <div className="container contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem' }}>
         
         {/* Left Column info */}
         <div>
@@ -83,7 +94,7 @@ export default function ContactPage() {
         </div>
 
         {/* Right Column Form container */}
-        <div style={{ background: '#FFFFFF', border: '1px solid var(--border-light)', borderRadius: '24px', padding: '3rem', boxShadow: '0 8px 32px rgba(18,18,18,0.015)' }}>
+        <div className="contact-form-container" style={{ background: '#FFFFFF', border: '1px solid var(--border-light)', borderRadius: '24px', padding: '3rem', boxShadow: '0 8px 32px rgba(18,18,18,0.015)' }}>
           <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
