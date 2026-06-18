@@ -244,7 +244,7 @@ export default function CaseStudyPage() {
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE PROBLEM</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
-                Real estate doesn't lack tools — it drowns in them. A CRM, three spreadsheets, a shared calendar, a WhatsApp group, a listings portal, an analytics tab nobody opens. Deals don't slip because agents can't sell; they slip because the system around them leaks. The real enemy isn't missing features — it's fragmentation. Every tab is a context switch, and every switch is a small tax on attention that compounds into lost revenue.
+                Real estate doesn't lack tools, it drowns in them. A CRM, three spreadsheets, a shared calendar, a WhatsApp group, a listings portal, an analytics tab nobody opens. Deals don't slip because agents can't sell; they slip because the system around them leaks. The real enemy isn't missing features, it's fragmentation. Every tab is a context switch, and every switch is a small tax on attention that compounds into lost revenue.
               </p>
             </div>
 

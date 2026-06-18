@@ -37,18 +37,6 @@ export const projects: Project[] = [
     needId: 'high-performance'
   },
   {
-    id: 'ux-telemetry',
-    title: 'User Experience Analytics Tool',
-    role: 'Product Designer Designer & Developer',
-    description: 'A custom dashboard tracking how users navigate web pages, identifying layout bugs, and pinpointing slow loading elements.',
-    longDescription: 'Designed and built an internal analytics application that monitors page performance and user interactions. Developed interactive chart visualizations to display Cumulative Layout Shift (CLS) and input delays, allowing teams to quickly find and resolve visual layout bugs.',
-    tags: ['Figma', 'TypeScript', 'CSS Grid', 'Data Charts', 'Product Designer Design'],
-    year: '2024',
-    gradient: '#F4EEFA',
-    visualType: 'audit',
-    needId: 'optimization'
-  },
-  {
     id: 'gesture-audio',
     title: 'Interactive Music & Sound App',
     role: 'Frontend Developer & Designer',
@@ -63,7 +51,7 @@ export const projects: Project[] = [
   {
     id: 'aunty-elewa',
     title: 'Aunty Elewa: Build-Your-Plate',
-    role: 'Product Engineer & Systems Architect',
+    role: 'Product Designer and Front-End Developer',
     description: 'From WhatsApp voice notes to a high-fidelity, build-your-plate catering ordering experience for busy Lagos corporate workers.',
     longDescription: 'Designed and engineered a dark, moody ordering experience that replaces manual WhatsApp back-and-forth negotiations with a frictionless, category-based plate builder. Solved complex additive pricing and visual navigation loops to deliver a quiet, high-conversion food checkout.',
     tags: ['Interaction Design', 'TypeScript', 'State Management', 'Tailored Commerce', 'UX Optimization'],
