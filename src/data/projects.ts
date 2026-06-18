@@ -54,7 +54,7 @@ export const projects: Project[] = [
     role: 'Product Designer and Front-End Developer',
     description: 'From WhatsApp voice notes to a high-fidelity, build-your-plate catering ordering experience for busy Lagos corporate workers.',
     longDescription: 'Designed and engineered a dark, moody ordering experience that replaces manual WhatsApp back-and-forth negotiations with a frictionless, category-based plate builder. Solved complex additive pricing and visual navigation loops to deliver a quiet, high-conversion food checkout.',
-    tags: ['Interaction Design', 'TypeScript', 'State Management', 'Tailored Commerce', 'UX Optimization'],
+    tags: ['Interaction Design', 'TypeScript', 'CSS', 'Tailored Commerce', 'UX Optimization'],
     year: '2026',
     gradient: 'linear-gradient(135deg, #16120e 0%, #25170d 100%)',
     visualType: 'audit',
