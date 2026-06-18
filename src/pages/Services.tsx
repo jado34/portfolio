@@ -19,7 +19,7 @@ const slides: ProcessSlide[] = [
     id: 1,
     title: 'Exploration',
     subtitle: 'The start of a solid foundation',
-    description: 'I start by understanding the big picture of your project. We sketch out ideas and organize the structure so you have a clear foundation before designing or writing any code.',
+    description: 'I start by understanding the big picture of your project. i sketch out ideas and organize the structure so you have a clear foundation before designing or writing any code.',
     bgColor: '#FFB7B2', // Gusta pinkish card background
     textColor: 'var(--text-charcoal)',
     lottieType: 'rocket'
@@ -37,7 +37,7 @@ const slides: ProcessSlide[] = [
     id: 3,
     title: 'Our approach',
     subtitle: 'A flexible path to value',
-    description: 'Every project is unique. We adapt our design and development workflow to fit your team and timeline. We work closely with you through regular feedback loops to ensure the final product matches your exact expectations.',
+    description: 'Every project is unique. I adapt my design and development workflow to fit your team and timeline. I work closely with you through regular feedback loops to ensure the final product matches your exact expectations.',
     bgColor: '#E29578', // Gusta rust background
     textColor: '#FFFFFF',
     lottieType: 'collaboration'
@@ -60,7 +60,8 @@ export default function ServicesPage() {
 
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '90px' }}>
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media (max-width: 640px) {
           .services-page-header-section { padding: 2rem 0 !important; }
           .services-page-header-section .services-info-bar { margin-bottom: 2rem !important; }
@@ -75,7 +76,7 @@ export default function ServicesPage() {
           {/* Top services nav header info */}
           <div className="services-info-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem' }}>
             <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-grey)' }}>
-              Services / Studio Matrix
+              Services / My Matrix
             </span>
             <Link to="/" style={{
               width: '44px',

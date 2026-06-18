@@ -205,6 +205,38 @@ ul {
   border-color: var(--accent-rust);
 }
 
+/* ── Hero headline & button row responsive ─────────────────── */
+@media (max-width: 640px) {
+  .hero-h1 {
+    font-size: clamp(2.25rem, 10vw, 3.5rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 2rem !important;
+  }
+  .hero-btns {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+  .hero-btns .btn-editorial {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 1rem 2rem !important;
+    font-size: 0.9rem !important;
+  }
+  .hero-btns .btn-editorial-ghost {
+    padding: 0.75rem 0 !important;
+    font-size: 11px !important;
+    border-bottom: 1px solid var(--border-light) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem) !important;
+  }
+}
+
 /* Services / Needs Selector Styles */
 .needs-grid {
   display: grid;

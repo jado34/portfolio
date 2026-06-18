@@ -50,21 +50,22 @@ export default function HomePage() {
           </div>
 
           <h1
+            className="hero-h1"
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(3.5rem, 8vw, 7.5rem)',
-              lineHeight: '0.9',
-              fontWeight: 800,
+              fontSize: 'clamp(2.6rem, 8vw, 7.5rem)',
+              lineHeight: '1.0',
+              fontWeight: 700,
               letterSpacing: '-0.03em',
               color: 'var(--text-charcoal)',
               marginBottom: '2.5rem',
             }}
           >
-            DESIGNING & BUILDING<br />
+            DESIGNING &amp; BUILDING<br />
             DIGITAL EXPERIENCES
           </h1>
 
-          <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', marginBottom: '2rem' }}>
+          <div className="hero-btns" style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', marginBottom: '2rem' }}>
             <Link to="/services" className="btn-editorial">
               OUR SERVICES
             </Link>

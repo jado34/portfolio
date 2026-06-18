@@ -70,7 +70,8 @@ export default function NeedsSelector({ activeNeed, onSelectNeed }: NeedsSelecto
 
   return (
     <section id="services" style={{ padding: '8rem 0', background: 'var(--bg-card)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media (max-width: 992px) {
           .needs-selector-grid {
             grid-template-columns: 1fr !important;
