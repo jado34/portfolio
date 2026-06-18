@@ -112,6 +112,51 @@ export default function HomePage() {
           .collage-item-float-1 { animation: float-slow-1 8s ease-in-out infinite; }
           .collage-item-float-2 { animation: float-slow-2 10s ease-in-out infinite; }
           .collage-item-float-3 { animation: float-slow-3 12s ease-in-out infinite; }
+
+          @media (max-width: 768px) {
+            .collage-showcase-container {
+              height: 500px !important;
+              padding: 2rem 0 !important;
+            }
+            .collage-item-macbook {
+              left: 2% !important;
+              top: 15% !important;
+              width: 200px !important;
+            }
+            .collage-item-ipad {
+              left: 35% !important;
+              top: 5% !important;
+              width: 170px !important;
+            }
+            .collage-item-iphone17 {
+              right: 2% !important;
+              top: 12% !important;
+              width: 130px !important;
+            }
+            .collage-item-wallet {
+              left: 25% !important;
+              top: 52% !important;
+              width: 110px !important;
+            }
+            .collage-item-class9 {
+              left: 65% !important;
+              top: 48% !important;
+              width: 140px !important;
+            }
+            .collage-item-isometric {
+              left: 2% !important;
+              top: 60% !important;
+              width: 100px !important;
+            }
+            .collage-item-groceries {
+              left: 45% !important;
+              top: 54% !important;
+              width: 110px !important;
+            }
+            .collage-cursor-tag {
+              display: none !important;
+            }
+          }
         `}} />
 
         <div style={{ position: 'relative', width: '100%', maxWidth: '1440px', height: '100%' }}>
@@ -123,6 +168,7 @@ export default function HomePage() {
           ].map((c, i) => (
             <div
               key={`c-${i}`}
+              className="collage-cursor-tag"
               style={{
                 position: 'absolute',
                 left: c.x,
@@ -158,13 +204,13 @@ export default function HomePage() {
 
           {/* Collage Mockup Items */}
           {[
-            { id: 0, src: '/re_macbook.jpeg', style: { left: '4%', top: '12%', width: '430px' }, rotate: -5, borderRadius: '16px', factor: 12, zIndex: 5 },
-            { id: 1, src: '/re_ipad.jpeg', style: { left: '38%', top: '4%', width: '380px' }, rotate: 3, borderRadius: '20px', factor: -8, zIndex: 6 },
-            { id: 2, src: '/iphone17_mockup.jpeg', style: { right: '4%', top: '10%', width: '290px' }, rotate: 6, borderRadius: '28px', factor: 16, zIndex: 9 },
-            { id: 4, src: '/s26_mockup.png', style: { left: '26%', top: '42%', width: '220px' }, rotate: 8, isContain: true, factor: 8, zIndex: 15 },
-            { id: 6, src: '/class_9.png', style: { left: '70%', top: '36%', width: '320px' }, rotate: -2, isContain: true, factor: 22, zIndex: 12 },
-            { id: 7, src: '/s26_isometric.png', style: { left: '4%', top: '52%', width: '220px' }, rotate: -15, isContain: true, factor: -10, zIndex: 6 },
-            { id: 8, src: '/groceries_1.png', style: { left: '48%', top: '44%', width: '260px' }, rotate: -4, borderRadius: '16px', factor: -12, zIndex: 10 }
+            { id: 0, className: 'collage-item-macbook', src: '/re_macbook.jpeg', style: { left: '4%', top: '12%', width: '430px' }, rotate: -5, borderRadius: '16px', factor: 12, zIndex: 5 },
+            { id: 1, className: 'collage-item-ipad', src: '/re_ipad.jpeg', style: { left: '38%', top: '4%', width: '380px' }, rotate: 3, borderRadius: '20px', factor: -8, zIndex: 6 },
+            { id: 2, className: 'collage-item-iphone17', src: '/iphone17_mockup.jpeg', style: { right: '4%', top: '10%', width: '290px' }, rotate: 6, borderRadius: '28px', factor: 16, zIndex: 9 },
+            { id: 4, className: 'collage-item-wallet', src: '/s26_mockup.png', style: { left: '26%', top: '42%', width: '220px' }, rotate: 8, isContain: true, factor: 8, zIndex: 15 },
+            { id: 6, className: 'collage-item-class9', src: '/class_9.png', style: { left: '70%', top: '36%', width: '320px' }, rotate: -2, isContain: true, factor: 22, zIndex: 12 },
+            { id: 7, className: 'collage-item-isometric', src: '/s26_isometric.png', style: { left: '4%', top: '52%', width: '220px' }, rotate: -15, isContain: true, factor: -10, zIndex: 6 },
+            { id: 8, className: 'collage-item-groceries', src: '/groceries_1.png', style: { left: '48%', top: '44%', width: '260px' }, rotate: -4, borderRadius: '16px', factor: -12, zIndex: 10 }
           ].map((item, index) => {
             const isHovered = hoveredCollageIdx === index;
             const currentZIndex = isHovered ? 30 : item.zIndex;
@@ -174,7 +220,7 @@ export default function HomePage() {
             return (
               <div
                 key={item.id}
-                className={`collage-item-float-${(index % 3) + 1}`}
+                className={`collage-item-float-${(index % 3) + 1} ${item.className}`}
                 style={{
                   position: 'absolute',
                   ...item.style,

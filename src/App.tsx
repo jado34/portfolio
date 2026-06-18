@@ -178,17 +178,17 @@ function Footer() {
 
         <div style={{ display: 'flex', gap: '2rem', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
           <Magnetic strength={0.25}>
-            <a href="https://github.com/semilore" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
+            <a href="https://github.com/jado34" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
               GitHub
             </a>
           </Magnetic>
           <Magnetic strength={0.25}>
-            <a href="https://linkedin.com/in/semilore" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
+            <a href="https://www.linkedin.com/in/olawuwo-david-565245266/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
               LinkedIn
             </a>
           </Magnetic>
           <Magnetic strength={0.25}>
-            <a href="https://X.com/semilore" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
+            <a href="https://x.com/Blaze_Runnerr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-grey)' }}>
               X
             </a>
           </Magnetic>

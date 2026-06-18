@@ -19,7 +19,7 @@ const slides: ProcessSlide[] = [
     id: 1,
     title: 'Exploration',
     subtitle: 'The start of a solid foundation',
-    description: 'I start by understanding the big picture of your project. We sketch out ideas and organize the structure so you have a clear foundation before writing any code.',
+    description: 'I start by understanding the big picture of your project. We sketch out ideas and organize the structure so you have a clear foundation before designing or writing any code.',
     bgColor: '#FFB7B2', // Gusta pinkish card background
     textColor: 'var(--text-charcoal)',
     lottieType: 'rocket'
