@@ -98,136 +98,136 @@ export default function HomePage() {
           __html: `
           /* ── Entrance: items drift in from unique offsets on load ── */
           @keyframes collage-enter-1 {
-            0%   { opacity: 0; transform: translate(-40px, 30px) rotate(-8deg) scale(0.92); }
+            0%   { opacity: 0; transform: translate(60px, 30px) rotate(-8deg) scale(0.92); }
             100% { opacity: 1; transform: translate(0px, 0px) rotate(0deg) scale(1); }
           }
           @keyframes collage-enter-2 {
-            0%   { opacity: 0; transform: translate(20px, -50px) rotate(6deg) scale(0.9); }
+            0%   { opacity: 0; transform: translate(80px, -40px) rotate(6deg) scale(0.9); }
             100% { opacity: 1; transform: translate(0px, 0px) rotate(0deg) scale(1); }
           }
           @keyframes collage-enter-3 {
-            0%   { opacity: 0; transform: translate(60px, 20px) rotate(10deg) scale(0.88); }
+            0%   { opacity: 0; transform: translate(100px, 20px) rotate(10deg) scale(0.88); }
             100% { opacity: 1; transform: translate(0px, 0px) rotate(0deg) scale(1); }
           }
           @keyframes collage-enter-4 {
-            0%   { opacity: 0; transform: translate(-30px, 60px) rotate(-5deg) scale(0.9); }
+            0%   { opacity: 0; transform: translate(60px, 50px) rotate(-5deg) scale(0.9); }
             100% { opacity: 1; transform: translate(0px, 0px) rotate(0deg) scale(1); }
           }
           @keyframes collage-enter-5 {
-            0%   { opacity: 0; transform: translate(40px, -30px) rotate(-12deg) scale(0.92); }
+            0%   { opacity: 0; transform: translate(90px, -30px) rotate(-12deg) scale(0.92); }
             100% { opacity: 1; transform: translate(0px, 0px) rotate(0deg) scale(1); }
           }
 
-          /* ── Idle: compound X+Y drift + rotation, all staggered & unique ── */
+          /* ── Idle: right-to-left primary drift, faster, each unique ── */
           @keyframes collage-drift-1 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            25%  { transform: translate(6px, -14px) rotate(1.2deg); }
-            50%  { transform: translate(-4px, -22px) rotate(-0.8deg); }
-            75%  { transform: translate(8px, -10px) rotate(0.5deg); }
+            25%  { transform: translate(-18px, -10px) rotate(1.0deg); }
+            50%  { transform: translate(-38px, -18px) rotate(-0.6deg); }
+            75%  { transform: translate(-22px, -8px) rotate(0.4deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-2 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            30%  { transform: translate(-8px, -10px) rotate(-1.5deg); }
-            60%  { transform: translate(5px, -18px) rotate(1.0deg); }
-            85%  { transform: translate(-3px, -6px) rotate(-0.4deg); }
+            30%  { transform: translate(-24px, -8px) rotate(-1.2deg); }
+            60%  { transform: translate(-44px, -14px) rotate(0.8deg); }
+            85%  { transform: translate(-16px, -6px) rotate(-0.3deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-3 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            20%  { transform: translate(10px, -8px) rotate(0.8deg); }
-            55%  { transform: translate(-6px, -20px) rotate(-1.2deg); }
-            80%  { transform: translate(4px, -14px) rotate(0.6deg); }
+            20%  { transform: translate(-14px, -6px) rotate(0.7deg); }
+            55%  { transform: translate(-32px, -16px) rotate(-1.0deg); }
+            80%  { transform: translate(-20px, -10px) rotate(0.5deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-4 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            35%  { transform: translate(-12px, -6px) rotate(-0.6deg); }
-            65%  { transform: translate(6px, -16px) rotate(1.4deg); }
-            90%  { transform: translate(-4px, -8px) rotate(-0.3deg); }
+            35%  { transform: translate(-30px, -4px) rotate(-0.5deg); }
+            65%  { transform: translate(-50px, -12px) rotate(1.2deg); }
+            90%  { transform: translate(-18px, -6px) rotate(-0.2deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-5 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            40%  { transform: translate(8px, -12px) rotate(-1.0deg); }
-            70%  { transform: translate(-10px, -20px) rotate(0.8deg); }
-            95%  { transform: translate(3px, -5px) rotate(-0.5deg); }
+            40%  { transform: translate(-20px, -10px) rotate(-0.8deg); }
+            70%  { transform: translate(-42px, -18px) rotate(0.6deg); }
+            95%  { transform: translate(-12px, -4px) rotate(-0.4deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-6 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            28%  { transform: translate(-5px, -16px) rotate(1.1deg); }
-            58%  { transform: translate(9px, -8px) rotate(-0.9deg); }
-            82%  { transform: translate(-7px, -18px) rotate(0.4deg); }
+            28%  { transform: translate(-16px, -12px) rotate(0.9deg); }
+            58%  { transform: translate(-36px, -6px) rotate(-0.7deg); }
+            82%  { transform: translate(-24px, -14px) rotate(0.3deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-7 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            22%  { transform: translate(12px, -10px) rotate(-1.3deg); }
-            52%  { transform: translate(-4px, -22px) rotate(0.7deg); }
-            78%  { transform: translate(7px, -14px) rotate(-0.6deg); }
+            22%  { transform: translate(-26px, -8px) rotate(-1.1deg); }
+            52%  { transform: translate(-46px, -18px) rotate(0.6deg); }
+            78%  { transform: translate(-20px, -10px) rotate(-0.5deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-8 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            45%  { transform: translate(-9px, -18px) rotate(1.5deg); }
-            72%  { transform: translate(5px, -10px) rotate(-1.0deg); }
-            92%  { transform: translate(-6px, -6px) rotate(0.3deg); }
+            45%  { transform: translate(-28px, -14px) rotate(1.3deg); }
+            72%  { transform: translate(-48px, -8px) rotate(-0.8deg); }
+            92%  { transform: translate(-18px, -4px) rotate(0.2deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
           @keyframes collage-drift-9 {
             0%   { transform: translate(0px, 0px) rotate(0deg); }
-            32%  { transform: translate(7px, -20px) rotate(-0.5deg); }
-            62%  { transform: translate(-11px, -12px) rotate(1.2deg); }
-            88%  { transform: translate(4px, -8px) rotate(-0.8deg); }
+            32%  { transform: translate(-22px, -16px) rotate(-0.4deg); }
+            62%  { transform: translate(-40px, -10px) rotate(1.0deg); }
+            88%  { transform: translate(-14px, -6px) rotate(-0.6deg); }
             100% { transform: translate(0px, 0px) rotate(0deg); }
           }
 
-          /* ── Apply: entrance then idle drift per item ────────── */
+          /* ── Apply: entrance then right-to-left drift, fast ─────── */
           .cfi-0 {
             animation:
-              collage-enter-1 0.9s cubic-bezier(0.16,1,0.3,1) 0.05s both,
-              collage-drift-1 9s ease-in-out 1s infinite;
+              collage-enter-1 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both,
+              collage-drift-1 3.5s ease-in-out 0.9s infinite;
           }
           .cfi-1 {
             animation:
-              collage-enter-2 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both,
-              collage-drift-2 11s ease-in-out 1.1s infinite;
+              collage-enter-2 0.8s cubic-bezier(0.16,1,0.3,1) 0.16s both,
+              collage-drift-2 4.5s ease-in-out 1.0s infinite;
           }
           .cfi-2 {
             animation:
-              collage-enter-3 1.0s cubic-bezier(0.16,1,0.3,1) 0.30s both,
-              collage-drift-3 7.5s ease-in-out 1.3s infinite;
+              collage-enter-3 0.8s cubic-bezier(0.16,1,0.3,1) 0.27s both,
+              collage-drift-3 3.0s ease-in-out 1.1s infinite;
           }
           .cfi-3 {
             animation:
-              collage-enter-4 0.9s cubic-bezier(0.16,1,0.3,1) 0.42s both,
-              collage-drift-4 13s ease-in-out 1.5s infinite;
+              collage-enter-4 0.8s cubic-bezier(0.16,1,0.3,1) 0.38s both,
+              collage-drift-4 5.5s ease-in-out 1.2s infinite;
           }
           .cfi-4 {
             animation:
-              collage-enter-5 1.0s cubic-bezier(0.16,1,0.3,1) 0.55s both,
-              collage-drift-5 8.5s ease-in-out 1.7s infinite;
+              collage-enter-5 0.8s cubic-bezier(0.16,1,0.3,1) 0.49s both,
+              collage-drift-5 4.0s ease-in-out 1.3s infinite;
           }
           .cfi-5 {
             animation:
-              collage-enter-1 0.9s cubic-bezier(0.16,1,0.3,1) 0.68s both,
-              collage-drift-6 14s ease-in-out 1.9s infinite;
+              collage-enter-1 0.8s cubic-bezier(0.16,1,0.3,1) 0.60s both,
+              collage-drift-6 6.0s ease-in-out 1.4s infinite;
           }
           .cfi-6 {
             animation:
-              collage-enter-2 1.0s cubic-bezier(0.16,1,0.3,1) 0.80s both,
-              collage-drift-7 10s ease-in-out 2.1s infinite;
+              collage-enter-2 0.8s cubic-bezier(0.16,1,0.3,1) 0.71s both,
+              collage-drift-7 3.8s ease-in-out 1.5s infinite;
           }
           .cfi-7 {
             animation:
-              collage-enter-3 0.9s cubic-bezier(0.16,1,0.3,1) 0.92s both,
-              collage-drift-8 12.5s ease-in-out 2.3s infinite;
+              collage-enter-3 0.8s cubic-bezier(0.16,1,0.3,1) 0.82s both,
+              collage-drift-8 5.0s ease-in-out 1.6s infinite;
           }
           .cfi-8 {
             animation:
-              collage-enter-4 1.0s cubic-bezier(0.16,1,0.3,1) 1.05s both,
-              collage-drift-9 15s ease-in-out 2.5s infinite;
+              collage-enter-4 0.8s cubic-bezier(0.16,1,0.3,1) 0.93s both,
+              collage-drift-9 4.2s ease-in-out 1.7s infinite;
           }
 
           /* ── Pause drift on hover so mouse-parallax feels crisp ─ */
