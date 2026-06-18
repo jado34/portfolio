@@ -154,12 +154,12 @@ export default function HomePage() {
               width: 110px !important;
             }
             .collage-item-greenlume1 {
-              right: 20% !important;
+              right: 2% !important;
               top: 64% !important;
               width: 80px !important;
             }
             .collage-item-greenlume2 {
-              left: 15% !important;
+              left: 2% !important;
               top: 68% !important;
               width: 80px !important;
             }
@@ -221,8 +221,8 @@ export default function HomePage() {
             { id: 6, className: 'collage-item-class9', src: '/class_9.png', style: { left: '70%', top: '36%', width: '320px' }, rotate: -2, isContain: true, factor: 22, zIndex: 12 },
             { id: 7, className: 'collage-item-isometric', src: '/s26_isometric.png', style: { left: '4%', top: '52%', width: '220px' }, rotate: -15, isContain: true, factor: -10, zIndex: 6 },
             { id: 8, className: 'collage-item-groceries', src: '/groceries_1.png', style: { left: '48%', top: '44%', width: '260px' }, rotate: -4, borderRadius: '16px', factor: -12, zIndex: 10 },
-            { id: 9, className: 'collage-item-greenlume1', src: '/greenlume_10.jpg', style: { right: '28%', top: '48%', width: '160px' }, rotate: -8, borderRadius: '24px', factor: 14, zIndex: 14 },
-            { id: 10, className: 'collage-item-greenlume2', src: '/greenlume_1.jpg', style: { left: '16%', top: '48%', width: '150px' }, rotate: 12, borderRadius: '24px', factor: -10, zIndex: 8 }
+            { id: 9, className: 'collage-item-greenlume1', src: '/greenlume_10.jpg', style: { right: '-1%', top: '48%', width: '190px' }, rotate: 8, borderRadius: '24px', factor: 14, zIndex: 8 },
+            { id: 10, className: 'collage-item-greenlume2', src: '/greenlume_1.jpg', style: { left: '-1%', top: '30%', width: '180px' }, rotate: -10, borderRadius: '24px', factor: -10, zIndex: 14 }
           ].map((item, index) => {
             const isHovered = hoveredCollageIdx === index;
             const currentZIndex = isHovered ? 30 : item.zIndex;
