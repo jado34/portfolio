@@ -20,19 +20,106 @@ export default function CaseStudyPage() {
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '90px', paddingBottom: '8rem' }}>
       <style dangerouslySetInnerHTML={{__html: `
+        /* ── Base styles for case study class-based elements ─── */
+        .cs-section-title {
+          font-family: var(--font-display);
+          font-size: 1.2rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: var(--accent-rust);
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+        .cs-section-text {
+          color: var(--text-grey);
+          font-size: 1rem;
+          line-height: 1.75;
+        }
+        .cs-summary-title {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          font-weight: 800;
+          margin-bottom: 1.5rem;
+          color: var(--text-charcoal);
+        }
+        .cs-stat-title {
+          font-weight: 700;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+          color: var(--text-charcoal);
+        }
+        .cs-stat-text {
+          color: var(--text-grey);
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+        .cs-full-span {
+          grid-column: span 2;
+          background: #FFFFFF;
+          border: 1.5px solid var(--border-light);
+          border-radius: 24px;
+          padding: 3rem;
+          margin-top: 2rem;
+          box-shadow: 0 8px 32px rgba(18,18,18,0.01);
+        }
+        .cs-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        /* ── Tablet (≤ 992px) ─────────────────────────────────── */
         @media (max-width: 992px) {
           .casestudy-hero-img { height: 360px !important; }
           .casestudy-screenshots-rail { gap: 1rem !important; }
           .casestudy-screenshots-rail img { width: 220px !important; height: 380px !important; }
-          .casestudy-sections-grid { margin: 3rem 0 !important; }
-          .casestudy-impact-row { flex-direction: column !important; gap: 1.5rem !important; }
+          .casestudy-sections-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+            margin: 4rem 0 !important;
+          }
+          .cs-full-span {
+            grid-column: 1 !important;
+            padding: 2rem !important;
+          }
+          .cs-stats-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 1.5rem !important;
+          }
+          .cs-bottom-cta {
+            padding: 2.5rem 1.5rem !important;
+            border-radius: 16px !important;
+            margin-top: 4rem !important;
+          }
+          .cs-bottom-cta h2 { font-size: 1.75rem !important; }
+          .cs-quote-block {
+            margin: 4rem 0 !important;
+            padding-left: 1.5rem !important;
+          }
+          .cs-quote-block p { font-size: 1.3rem !important; }
         }
+
+        /* ── Mobile (≤ 640px) ─────────────────────────────────── */
         @media (max-width: 640px) {
           .casestudy-hero-img { height: 240px !important; border-radius: 16px !important; }
           .casestudy-screenshots-rail img { width: 160px !important; height: 280px !important; }
-          .casestudy-sections-grid { margin: 2rem 0 !important; gap: 2rem !important; }
+          .casestudy-sections-grid {
+            gap: 2.5rem !important;
+            margin: 3rem 0 !important;
+          }
+          .cs-full-span {
+            padding: 1.5rem !important;
+            border-radius: 16px !important;
+          }
+          .cs-stats-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .cs-section-title { font-size: 1rem !important; }
+          .cs-summary-title { font-size: 1.25rem !important; margin-bottom: 1rem !important; }
+          .cs-bottom-cta { padding: 2rem 1.25rem !important; }
+          .cs-bottom-cta h2 { font-size: 1.5rem !important; }
           .casestudy-back-bar { padding: 1.25rem 0 !important; }
-          .casestudy-back-bar span { font-size: 10px !important; }
         }
       `}} />
       <div className="container">
@@ -328,9 +415,10 @@ export default function CaseStudyPage() {
               </p>
             </div>
 
-            <div style={{ gridColumn: 'span 2', background: '#FFFFFF', border: '1.5px solid var(--border-light)', borderRadius: '24px', padding: '3rem', marginTop: '2rem', boxShadow: '0 8px 32px rgba(18,18,18,0.01)' }}>
+            {/* Full-width summary card */}
+            <div className="cs-full-span" style={{ gridColumn: 'span 2', background: '#FFFFFF', border: '1.5px solid var(--border-light)', borderRadius: '24px', padding: '3rem', marginTop: '2rem', boxShadow: '0 8px 32px rgba(18,18,18,0.01)' }}>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--text-charcoal)' }}>WHAT IT MEANS FOR YOUR BUSINESS</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+              <div className="cs-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
                 <div>
                   <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Faster Decisions</h5>
                   <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Everything actionable is one click, zero exports away, keeping momentum high.</p>
@@ -379,27 +467,27 @@ export default function CaseStudyPage() {
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE GENTLE UPSELL</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">THE GENTLE UPSELL</h4>
+              <p className="cs-section-text">
                 I added a "Pairs perfectly with your order" prompt in the cart suggesting fried plantain alongside Ewa Agoyin and chicken, or a cold drink to balance the heat. It is a soft, contextual recommendation, mimicking a waiter noticing what is missing from the table rather than a generic hard upsell banner.
               </p>
             </div>
 
-            <div style={{ gridColumn: 'span 2', background: '#FFFFFF', border: '1.5px solid var(--border-light)', borderRadius: '24px', padding: '3rem', marginTop: '2rem', boxShadow: '0 8px 32px rgba(18,18,18,0.01)' }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--text-charcoal)' }}>BUSINESS & PRODUCT TRANSFORMATION</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+            <div className="cs-full-span">
+              <h4 className="cs-summary-title">BUSINESS & PRODUCT TRANSFORMATION</h4>
+              <div className="cs-stats-grid">
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Zero Cart Shock</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Live additive pricing updates the total with every single choice, preventing cart abandonment due to unexpected totals.</p>
+                  <h5 className="cs-stat-title">Zero Cart Shock</h5>
+                  <p className="cs-stat-text">Live additive pricing updates the total with every single choice, preventing cart abandonment due to unexpected totals.</p>
                 </div>
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>90% Reduction in DM Overhead</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Replaces conversational back-and-forth for order configurations with a structured plate checkout that prints directly to the kitchen.</p>
+                  <h5 className="cs-stat-title">90% Reduction in DM Overhead</h5>
+                  <p className="cs-stat-text">Replaces conversational back-and-forth for order configurations with a structured plate checkout that prints directly to the kitchen.</p>
                 </div>
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Office break optimization</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Saves office workers valuable break time by allowing complete food assembly and payments in under 45 seconds.</p>
+                  <h5 className="cs-stat-title">Office break optimization</h5>
+                  <p className="cs-stat-text">Saves office workers valuable break time by allowing complete food assembly and payments in under 45 seconds.</p>
                 </div>
               </div>
             </div>
@@ -409,80 +497,80 @@ export default function CaseStudyPage() {
         {/* Detailed Case Study Sections (GreenLume specific) */}
         {project.id === 'greenlume' && (
           <div className="casestudy-sections-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem 6rem', margin: '6rem 0' }}>
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE BRIEF</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">THE BRIEF</h4>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 I didn't start with a finished interaction spec. I started with a pitch deck, the investor kind, full of confident lines like "we're building a behavior-change engine", and a set of mockups that showed what the screens should look like. What they didn't show was what should happen in the gaps between those screens: the moments a static frame can't capture, like what happens when a user hesitates, backs out, or hits a flow that doesn't have an obvious next step.
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+              <p className="cs-section-text">
                 That gap is where a lot of my actual work lived. Building this wasn't just translating pixels into components. It was constantly answering a question the mockups left open: <em>what does this actually feel like to use, and what happens when it doesn't go perfectly?</em>
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE MOMENT IT GOT REAL</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">THE MOMENT IT GOT REAL</h4>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 The first time I sat down with the spec, the gamification looked almost cute. Tap an action, get points. Easy, right?
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 Then I mapped out what one tap on "Plant-Based Meal" actually needed to <em>do</em> — update today's points, nudge the streak, tick a weekly challenge, check level thresholds, and possibly pause for photo verification first — and the cute feeling evaporated. One tap, five systems, all needing to agree with each other.
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+              <p className="cs-section-text">
                 That's also where my first real design decision showed up, not just an engineering one: should each of those five things happen the instant you tap, or should the user get a chance to see what they're about to commit to first? I chose the second. The log flow lets someone multi-select several actions and watch a live points preview tally up "Earn +20 🌱 & +1 💧" before anything actually saves.
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE DECISION THE MOCKUP DIDN'T MAKE</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">THE DECISION THE MOCKUP DIDN'T MAKE</h4>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 Here's the clearest example of where design thinking happened at the build layer instead of in a design file: photo verification. The mockup showed the modal camera icon, "Take Photo," "Choose from Library." What it didn't show was what happens when someone doesn't have a photo to give.
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+              <p className="cs-section-text">
                 I chose to make verification optional by adding a secondary "Save without Proof" button. A habit-tracking app dies the moment logging feels like homework. If someone has to dig out their phone, find the right angle, and snap a photo every single time they want credit for taking the bus, most people stop logging by day three. Frequency of logging matters more than proof of logging, at least in this phase of the product.
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE NURSERY GARDEN MECHANICS</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">THE NURSERY GARDEN MECHANICS</h4>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 The Nursery had the same kind of gap. The mockup showed coins, water drops, seeds, and two plant slots, the pieces, not the rules. I built a 24-hour window before a planted seed starts visibly thirsting, and a 48-hour ceiling before it withers entirely.
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+              <p className="cs-section-text">
                 Neglect must have a real consequence. A plant that can't die isn't a pet, it's a progress bar wearing a costume. The drought warning needed to feel urgent so skipping a few days actually registers as a loss. This required coins, water, and points to run on separate rules and sync correctly from the same action log in real time.
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>MULTIPLE SCREENS, ONE TRUTH</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">MULTIPLE SCREENS, ONE TRUTH</h4>
+              <p className="cs-section-text">
                 Home shows your level. Badges shows your level. The Nursery shows your level. If those three ever disagree — even briefly — the whole illusion of a living, trustworthy app cracks. Users don't file a bug report; they just stop trusting the numbers. So Seedling, Sprout, Sapling, and Tree levels had to live in exactly one relational schema and read identically everywhere.
               </p>
             </div>
 
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>WORLD OUTSIDE THE APP</h4>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
+            <div className="cs-section">
+              <h4 className="cs-section-title">WORLD OUTSIDE THE APP</h4>
+              <p className="cs-section-text" style={{ marginBottom: '1.5rem' }}>
                 The custom action builder hands the user a blank slate name it, categorize it, set the points, watch a live preview update as you type. Custom actions run through the exact same scoring pipeline as standard ones.
               </p>
-              <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
+              <p className="cs-section-text">
                 The Local Eco-Map calculates real distance to nearby recycling hubs and hands off to the device's native maps app. The "Log Action" button on a map pin routes back into the same logging flow, because walking to a hub and logging an action both represent "I did something good today."
               </p>
             </div>
 
-            <div style={{ gridColumn: 'span 2', background: '#FFFFFF', border: '1.5px solid var(--border-light)', borderRadius: '24px', padding: '3rem', marginTop: '2rem', boxShadow: '0 8px 32px rgba(18,18,18,0.01)' }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--text-charcoal)' }}>BUSINESS & PRODUCT TRANSFORMATION</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+            <div className="cs-full-span">
+              <h4 className="cs-summary-title">BUSINESS & PRODUCT TRANSFORMATION</h4>
+              <div className="cs-stats-grid">
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Habit Preservation</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>By keeping proof optional, user daily logging frequency remains high, avoiding cart-style logging friction.</p>
+                  <h5 className="cs-stat-title">Habit Preservation</h5>
+                  <p className="cs-stat-text">By keeping proof optional, user daily logging frequency remains high, avoiding cart-style logging friction.</p>
                 </div>
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Consequential Gamification</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Introducing plant wilting and water decay schedules drove real behavioral accountability.</p>
+                  <h5 className="cs-stat-title">Consequential Gamification</h5>
+                  <p className="cs-stat-text">Introducing plant wilting and water decay schedules drove real behavioral accountability.</p>
                 </div>
                 <div>
-                  <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Supabase Real-time Sync</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Real-time updates resolved the multiple-screens-one-truth data sync problem cleanly across screens.</p>
+                  <h5 className="cs-stat-title">Supabase Real-time Sync</h5>
+                  <p className="cs-stat-text">Real-time updates resolved the multiple-screens-one-truth data sync problem cleanly across screens.</p>
                 </div>
               </div>
             </div>
@@ -490,7 +578,7 @@ export default function CaseStudyPage() {
         )}
 
         {/* Large Editorial Quotation block from the client */}
-        <div style={{
+        <div className="cs-quote-block" style={{
           borderLeft: '4px solid var(--accent-rust)',
           paddingLeft: '2.5rem',
           margin: '6rem 0',
@@ -526,7 +614,7 @@ export default function CaseStudyPage() {
         </div>
 
         {/* Bottom CTA to contact */}
-        <div style={{
+        <div className="cs-bottom-cta" style={{
           background: '#080a0c',
           color: '#FFFFFF',
           borderRadius: '24px',
