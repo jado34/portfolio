@@ -396,7 +396,7 @@ export default function CaseStudyPage() {
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE BRIEF</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
-                I didn't start with a finished interaction spec. I started with a pitch deck — the investor kind, full of confident lines like "we're building a behavior-change engine" — and a set of mockups that showed what the screens should look like. What they didn't show was what should happen in the gaps between those screens: the moments a static frame can't capture, like what happens when a user hesitates, backs out, or hits a flow that doesn't have an obvious next step.
+                I didn't start with a finished interaction spec. I started with a pitch deck, the investor kind, full of confident lines like "we're building a behavior-change engine", and a set of mockups that showed what the screens should look like. What they didn't show was what should happen in the gaps between those screens: the moments a static frame can't capture, like what happens when a user hesitates, backs out, or hits a flow that doesn't have an obvious next step.
               </p>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
                 That gap is where a lot of my actual work lived. Building this wasn't just translating pixels into components. It was constantly answering a question the mockups left open: <em>what does this actually feel like to use, and what happens when it doesn't go perfectly?</em>
@@ -412,14 +412,14 @@ export default function CaseStudyPage() {
                 Then I mapped out what one tap on "Plant-Based Meal" actually needed to <em>do</em> — update today's points, nudge the streak, tick a weekly challenge, check level thresholds, and possibly pause for photo verification first — and the cute feeling evaporated. One tap, five systems, all needing to agree with each other.
               </p>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
-                That's also where my first real design decision showed up, not just an engineering one: should each of those five things happen the instant you tap, or should the user get a chance to see what they're about to commit to first? I chose the second. The log flow lets someone multi-select several actions and watch a live points preview tally up — "Earn +20 🌱 & +1 💧" — before anything actually saves.
+                That's also where my first real design decision showed up, not just an engineering one: should each of those five things happen the instant you tap, or should the user get a chance to see what they're about to commit to first? I chose the second. The log flow lets someone multi-select several actions and watch a live points preview tally up "Earn +20 🌱 & +1 💧" before anything actually saves.
               </p>
             </div>
 
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE DECISION THE MOCKUP DIDN'T MAKE</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
-                Here's the clearest example of where design thinking happened at the build layer instead of in a design file: photo verification. The mockup showed the modal — camera icon, "Take Photo," "Choose from Library." What it didn't show was what happens when someone doesn't have a photo to give.
+                Here's the clearest example of where design thinking happened at the build layer instead of in a design file: photo verification. The mockup showed the modal camera icon, "Take Photo," "Choose from Library." What it didn't show was what happens when someone doesn't have a photo to give.
               </p>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
                 I chose to make verification optional by adding a secondary "Save without Proof" button. A habit-tracking app dies the moment logging feels like homework. If someone has to dig out their phone, find the right angle, and snap a photo every single time they want credit for taking the bus, most people stop logging by day three. Frequency of logging matters more than proof of logging, at least in this phase of the product.
@@ -429,7 +429,7 @@ export default function CaseStudyPage() {
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THE NURSERY GARDEN MECHANICS</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
-                The Nursery had the same kind of gap. The mockup showed coins, water drops, seeds, and two plant slots — the pieces, not the rules. I built a 24-hour window before a planted seed starts visibly thirsting, and a 48-hour ceiling before it withers entirely.
+                The Nursery had the same kind of gap. The mockup showed coins, water drops, seeds, and two plant slots, the pieces, not the rules. I built a 24-hour window before a planted seed starts visibly thirsting, and a 48-hour ceiling before it withers entirely.
               </p>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
                 Neglect must have a real consequence. A plant that can't die isn't a pet, it's a progress bar wearing a costume. The drought warning needed to feel urgent so skipping a few days actually registers as a loss. This required coins, water, and points to run on separate rules and sync correctly from the same action log in real time.
@@ -437,7 +437,7 @@ export default function CaseStudyPage() {
             </div>
 
             <div>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>THREE SCREENS, ONE TRUTH</h4>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>MULTIPLE SCREENS, ONE TRUTH</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
                 Home shows your level. Badges shows your level. The Nursery shows your level. If those three ever disagree — even briefly — the whole illusion of a living, trustworthy app cracks. Users don't file a bug report; they just stop trusting the numbers. So Seedling, Sprout, Sapling, and Tree levels had to live in exactly one relational schema and read identically everywhere.
               </p>
@@ -446,7 +446,7 @@ export default function CaseStudyPage() {
             <div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-rust)', letterSpacing: '0.05em' }}>WORLD OUTSIDE THE APP</h4>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '1.5rem' }}>
-                The custom action builder hands the user a blank slate — name it, categorize it, set the points, watch a live preview update as you type. Custom actions run through the exact same scoring pipeline as standard ones.
+                The custom action builder hands the user a blank slate name it, categorize it, set the points, watch a live preview update as you type. Custom actions run through the exact same scoring pipeline as standard ones.
               </p>
               <p style={{ color: 'var(--text-grey)', fontSize: '1rem', lineHeight: '1.75' }}>
                 The Local Eco-Map calculates real distance to nearby recycling hubs and hands off to the device's native maps app. The "Log Action" button on a map pin routes back into the same logging flow, because walking to a hub and logging an action both represent "I did something good today."
@@ -466,7 +466,7 @@ export default function CaseStudyPage() {
                 </div>
                 <div>
                   <h5 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--text-charcoal)' }}>Supabase Real-time Sync</h5>
-                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Real-time updates resolved the three-screens-one-truth data sync problem cleanly across screens.</p>
+                  <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem', lineHeight: '1.6' }}>Real-time updates resolved the multiple-screens-one-truth data sync problem cleanly across screens.</p>
                 </div>
               </div>
             </div>

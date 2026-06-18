@@ -19,7 +19,7 @@ export const projects: Project[] = [
     description: 'A React Native and Supabase habit tracker app designed to turn personal sustainability actions into daily rewarding habits.',
     longDescription: 'Engineered the mobile experience behind a personal sustainability habit tracker app. Built real-time gamified tracking loops, photo verification logic, and a dynamic plant growth nursery using React Native, Expo, and Supabase.',
     tags: ['React Native', 'Expo', 'Supabase', 'Mobile Dev', 'UX Decisions'],
-    year: '2025',
+    year: '2026',
     gradient: 'linear-gradient(135deg, #102a1e 0%, #1c4532 100%)',
     visualType: 'audit',
     needId: 'design-tokens'
@@ -27,10 +27,10 @@ export const projects: Project[] = [
   {
     id: 'real-estate-os',
     title: 'The Real Estate Operating System',
-    role: 'Product Engineer (Expert)',
+    role: 'Product Designer',
     description: 'A unified, high-fidelity real estate workspace replacing a dozen CRMs, calendars, and spreadsheets with a single quiet, premium surface.',
-    longDescription: 'Designed and engineered a frosted-glass workspace that unifies CRM data, agent metrics, showing calendars, and custom AI tools. Resolved complex navigation overlaps and source design collisions to deliver a quiet, high-conversion broker experience using Albert Sans and an action-focused electric blue theme.',
-    tags: ['SaaS', 'Systems Architecture', 'TypeScript', 'Analytics', 'UX Optimization'],
+    longDescription: 'Designed a frosted-glass workspace that unifies CRM data, agent metrics, showing calendars, and custom AI tools. Resolved complex navigation overlaps and source design collisions to deliver a quiet, high-conversion broker experience using Albert Sans and an action-focused electric blue theme.',
+    tags: ['SaaS', 'Systems Architecture', 'Figma Prototyping', 'Analytics UX', 'UX Optimization'],
     year: '2025',
     gradient: '#FAF8F5',
     visualType: 'audit',
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description: 'From WhatsApp voice notes to a high-fidelity, build-your-plate catering ordering experience for busy Lagos corporate workers.',
     longDescription: 'Designed and engineered a dark, moody ordering experience that replaces manual WhatsApp back-and-forth negotiations with a frictionless, category-based plate builder. Solved complex additive pricing and visual navigation loops to deliver a quiet, high-conversion food checkout.',
     tags: ['Interaction Design', 'TypeScript', 'State Management', 'Tailored Commerce', 'UX Optimization'],
-    year: '2025',
+    year: '2026',
     gradient: 'linear-gradient(135deg, #16120e 0%, #25170d 100%)',
     visualType: 'audit',
     needId: 'high-performance'
