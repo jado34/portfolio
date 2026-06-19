@@ -3,7 +3,7 @@ import { projects } from '../data/projects';
 import type { ProjectMetric } from '../data/projects';
 import ProjectVisual from '../components/ProjectVisual';
 import { X, ArrowLeft, Clock } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // ── Metrics count-up band ──────────────────────────────────────
 function MetricsBand({ metrics }: { metrics: ProjectMetric[] }) {
@@ -71,6 +71,29 @@ export default function CaseStudyPage() {
   const { currentPath } = useRouter();
   const projectId = currentPath.split('/').pop();
   const project = projects.find((p) => p.id === projectId);
+
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setLightboxImage(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (lightboxImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [lightboxImage]);
 
   if (!project) {
     return (
@@ -339,6 +362,7 @@ export default function CaseStudyPage() {
                   key={i}
                   src={img.src}
                   alt={img.alt}
+                  onClick={() => setLightboxImage(img)}
                   style={{
                     width: '100%',
                     height: 'auto',
@@ -346,6 +370,16 @@ export default function CaseStudyPage() {
                     boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
                     border: '1px solid rgba(255,255,255,0.08)',
                     display: 'block',
+                    cursor: 'zoom-in',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.02) translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 28px 56px rgba(0, 0, 0, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = '0 24px 48px rgba(0, 0, 0, 0.4)';
                   }}
                 />
               ))}
@@ -365,12 +399,23 @@ export default function CaseStudyPage() {
               <img
                 src="/re_macbook.jpeg"
                 alt="MacBook Pro Operating System Mockup"
+                onClick={() => setLightboxImage({ src: '/re_macbook.jpeg', alt: 'MacBook Pro Operating System Mockup' })}
                 style={{
                   width: '100%',
                   height: 'auto',
                   borderRadius: '16px',
                   boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)',
                   display: 'block',
+                  cursor: 'zoom-in',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.01) translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 24px 56px rgba(18, 18, 18, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = '0 20px 48px rgba(18, 18, 18, 0.12)';
                 }}
               />
               <div style={{
@@ -384,6 +429,7 @@ export default function CaseStudyPage() {
                 <img
                   src="/re_ipad.jpeg"
                   alt="iPad Broker Dashboard Mockup"
+                  onClick={() => setLightboxImage({ src: '/re_ipad.jpeg', alt: 'iPad Broker Dashboard Mockup' })}
                   style={{
                     flex: '1 1 260px',
                     maxWidth: '420px',
@@ -392,11 +438,22 @@ export default function CaseStudyPage() {
                     borderRadius: '16px',
                     boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)',
                     display: 'block',
+                    cursor: 'zoom-in',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.02) translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 24px 56px rgba(18, 18, 18, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = '0 20px 48px rgba(18, 18, 18, 0.12)';
                   }}
                 />
                 <img
                   src="/re_s26_isometric.png"
                   alt="Samsung S26 Isometric Mobile Mockup"
+                  onClick={() => setLightboxImage({ src: '/re_s26_isometric.png', alt: 'Samsung S26 Isometric Mobile Mockup' })}
                   style={{
                     flex: '0 1 180px',
                     maxWidth: '220px',
@@ -404,6 +461,16 @@ export default function CaseStudyPage() {
                     height: 'auto',
                     filter: 'drop-shadow(0 20px 48px rgba(18, 18, 18, 0.08))',
                     display: 'block',
+                    cursor: 'zoom-in',
+                    transition: 'transform 0.3s ease, filter 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.03) translateY(-4px)';
+                    e.currentTarget.style.filter = 'drop-shadow(0 24px 56px rgba(18, 18, 18, 0.12))';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.filter = 'drop-shadow(0 20px 48px rgba(18, 18, 18, 0.08))';
                   }}
                 />
               </div>
@@ -439,6 +506,7 @@ export default function CaseStudyPage() {
                     key={i}
                     src={img.src}
                     alt={img.alt}
+                    onClick={() => setLightboxImage(img)}
                     style={{
                       height: 'clamp(240px, 55vw, 420px)',
                       width: 'auto',
@@ -449,6 +517,16 @@ export default function CaseStudyPage() {
                       flexShrink: 0,
                       scrollSnapAlign: 'start',
                       display: 'block',
+                      cursor: 'zoom-in',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 16px 48px rgba(0, 0, 0, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'none';
+                      e.currentTarget.style.boxShadow = '0 12px 36px rgba(0, 0, 0, 0.3)';
                     }}
                   />
                 ))}
@@ -733,6 +811,114 @@ export default function CaseStudyPage() {
         </div>
 
       </div>
+
+      {/* Lightbox Overlay */}
+      {lightboxImage && (
+        <div
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            background: 'rgba(8, 10, 12, 0.94)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'zoom-out',
+            animation: 'fadeIn 0.25s ease-out forwards',
+          }}
+        >
+          {/* Style for animation */}
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            @keyframes scaleIn {
+              from { transform: scale(0.95); opacity: 0; }
+              to { transform: scale(1); opacity: 1; }
+            }
+          `}} />
+
+          {/* Close button */}
+          <button
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              top: '24px',
+              right: '24px',
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'rgba(255, 255, 255, 0.08)',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.transform = 'none';
+            }}
+          >
+            <X size={20} />
+          </button>
+
+          {/* Lightbox content container */}
+          <div
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image/caption
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.5rem',
+              maxWidth: '90vw',
+              animation: 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            }}
+          >
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '80vh',
+                objectFit: 'contain',
+                borderRadius: '12px',
+                boxShadow: '0 32px 64px rgba(0, 0, 0, 0.5)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                cursor: 'zoom-out',
+              }}
+              onClick={() => setLightboxImage(null)}
+            />
+            {lightboxImage.alt && (
+              <p
+                style={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '11px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  textAlign: 'center',
+                  maxWidth: '600px',
+                  lineHeight: '1.5',
+                }}
+              >
+                {lightboxImage.alt}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
