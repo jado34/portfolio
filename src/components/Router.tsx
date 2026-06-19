@@ -1,11 +1,9 @@
-import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import gsap from 'gsap';
 
 interface RouterContextType {
   currentPath: string;
   navigate: (to: string) => void;
-  isTransitioning: boolean;
 }
 
 const RouterContext = createContext<RouterContextType | undefined>(undefined);
@@ -17,7 +15,6 @@ export const transitionTriggerRef = {
 
 export function RouterProvider({ children }: { children: ReactNode }) {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -48,11 +45,14 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as unknown as Record<string, unknown>).__blazeCommitNav = commitNavigation;
+    }
+  }, [commitNavigation]);
+
   return (
-    <RouterContext.Provider value={{ currentPath, navigate, isTransitioning }}>
-      {/* Attach commitNavigation so PageTransition can call it mid-animation */}
-      {typeof window !== 'undefined' &&
-        ((window as unknown as Record<string, unknown>).__blazeCommitNav = commitNavigation)}
+    <RouterContext.Provider value={{ currentPath, navigate }}>
       {children}
     </RouterContext.Provider>
   );
