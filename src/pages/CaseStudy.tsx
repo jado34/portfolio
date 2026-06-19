@@ -1,7 +1,71 @@
 import { useRouter, Link } from '../components/Router';
 import { projects } from '../data/projects';
+import type { ProjectMetric } from '../data/projects';
 import ProjectVisual from '../components/ProjectVisual';
-import { X, ArrowLeft } from 'lucide-react';
+import { X, ArrowLeft, Clock } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+
+// ── Metrics count-up band ──────────────────────────────────────
+function MetricsBand({ metrics }: { metrics: ProjectMetric[] }) {
+  const bandRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const band = bandRef.current;
+    if (!band) return;
+    const cells = band.querySelectorAll<HTMLElement>('.metrics-value[data-target]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const raw = el.dataset.target ?? '0';
+          const numMatch = raw.match(/[\d.]+/);
+          if (!numMatch) { el.textContent = raw; return; }
+          const end = parseFloat(numMatch[0]);
+          const isFloat = raw.includes('.');
+          const prefix = el.dataset.prefix ?? '';
+          const suffix = raw.replace(/[\d.]+/, '').replace(prefix, '');
+          const duration = 1400;
+          const startTime = performance.now();
+
+          const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = isFloat ? (eased * end).toFixed(1) : Math.round(eased * end);
+            el.textContent = `${prefix}${current}${suffix}`;
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    cells.forEach((c) => observer.observe(c));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={bandRef} className="metrics-band">
+      {metrics.map((m, i) => (
+        <div key={i} className="metrics-cell">
+          <div
+            className="metrics-value"
+            data-target={m.value}
+            data-prefix={m.prefix ?? ''}
+          >
+            {m.prefix}{m.value}
+          </div>
+          <div className="metrics-label">{m.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 
 export default function CaseStudyPage() {
   const { currentPath } = useRouter();
@@ -126,9 +190,16 @@ export default function CaseStudyPage() {
 
         {/* Header Close Nav */}
         <div className="casestudy-back-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2.5rem 0' }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--text-grey)', letterSpacing: '0.05em' }}>
-            <ArrowLeft size={14} /> Back to work index
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--text-grey)', letterSpacing: '0.05em' }}>
+              <ArrowLeft size={14} /> Back to work index
+            </Link>
+            {/* Reading time badge */}
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '10px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', borderLeft: '1px solid var(--border-light)', paddingLeft: '1.5rem' }}>
+              <Clock size={11} />
+              {project.readingTimeMinutes} min read
+            </span>
+          </div>
 
           <Link to="/" style={{
             width: '44px',
@@ -237,7 +308,7 @@ export default function CaseStudyPage() {
           background: project.gradient,
           borderRadius: '32px',
           border: '1px solid var(--border-light)',
-          padding: (project.id === 'aunty-elewa' || project.id === 'real-estate-os' || project.id === 'greenlume') ? '4rem 2rem' : undefined,
+          padding: (project.id === 'aunty-elewa' || project.id === 'real-estate-os' || project.id === 'greenlume') ? '2rem 1.5rem' : undefined,
           height: (project.id === 'aunty-elewa' || project.id === 'real-estate-os' || project.id === 'greenlume') ? 'auto' : '480px',
           display: 'flex',
           alignItems: 'center',
@@ -247,131 +318,156 @@ export default function CaseStudyPage() {
           margin: '4rem 0',
           boxShadow: '0 12px 48px rgba(18,18,18,0.03)'
         }}>
+
+          {/* ── AUNTY ELEWA — single column stack on mobile, 2-col on desktop ── */}
           {project.id === 'aunty-elewa' ? (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))',
-              gap: '2.5rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+              gap: '1.25rem',
               width: '100%',
               maxWidth: '1100px',
-              padding: '1.5rem'
-            }}>
-              <img
-                src="/elewa_screenshot_1.png"
-                alt="Aunty Elewa Home Screen Mockup"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
-                  border: '1px solid rgba(255,255,255,0.08)'
-                }}
-              />
-              <img
-                src="/elewa_screenshot_2.png"
-                alt="Aunty Elewa Menu Category Mockup"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
-                  border: '1px solid rgba(255,255,255,0.08)'
-                }}
-              />
-              <img
-                src="/elewa_screenshot_3.png"
-                alt="Aunty Elewa Plate Builder Mockup"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
-                  border: '1px solid rgba(255,255,255,0.08)'
-                }}
-              />
-              <img
-                src="/elewa_screenshot_4.png"
-                alt="Aunty Elewa Checkout Screen Mockup"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
-                  border: '1px solid rgba(255,255,255,0.08)'
-                }}
-              />
-            </div>
-          ) : project.id === 'real-estate-os' ? (
-            <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', width: '100%', maxWidth: '1200px', padding: '1rem' }}>
-              <img
-                src="/re_macbook.jpeg"
-                alt="MacBook Pro Operating System Mockup"
-                style={{
-                  width: '100%',
-                  maxWidth: '520px',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)'
-                }}
-              />
-              <img
-                src="/re_ipad.jpeg"
-                alt="iPad Broker Dashboard Mockup"
-                style={{
-                  width: '100%',
-                  maxWidth: '350px',
-                  height: 'auto',
-                  borderRadius: '16px',
-                  boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)'
-                }}
-              />
-              <img
-                src="/re_s26_isometric.png"
-                alt="Samsung S26 Isometric Mobile Mockup"
-                style={{
-                  width: '100%',
-                  maxWidth: '220px',
-                  height: 'auto',
-                  filter: 'drop-shadow(0 20px 48px rgba(18, 18, 18, 0.08))'
-                }}
-              />
-            </div>
-          ) : project.id === 'greenlume' ? (
-            <div style={{
-              display: 'flex',
-              gap: '1.5rem',
-              overflowX: 'auto',
-              width: '100%',
-              padding: '2rem 1.5rem',
-              scrollbarWidth: 'thin',
+              padding: '1rem',
             }}>
               {[
-                { src: '/greenlume_1.jpg', alt: 'GreenLume App 1' },
-                { src: '/greenlume_2.jpg', alt: 'GreenLume App 2' },
-                { src: '/greenlume_3.jpg', alt: 'GreenLume App 3' },
-                { src: '/greenlume_4.jpg', alt: 'GreenLume App 4' },
-                { src: '/greenlume_5.jpg', alt: 'GreenLume App 5' },
-                { src: '/greenlume_6.jpg', alt: 'GreenLume App 6' },
-                { src: '/greenlume_7.jpg', alt: 'GreenLume App 7' },
-                { src: '/greenlume_8.jpg', alt: 'GreenLume App 8' },
-                { src: '/greenlume_9.jpg', alt: 'GreenLume App 9' },
-                { src: '/greenlume_10.jpg', alt: 'GreenLume App 10' }
+                { src: '/elewa_screenshot_1.png', alt: 'Aunty Elewa Home Screen Mockup' },
+                { src: '/elewa_screenshot_2.png', alt: 'Aunty Elewa Menu Category Mockup' },
+                { src: '/elewa_screenshot_3.png', alt: 'Aunty Elewa Plate Builder Mockup' },
+                { src: '/elewa_screenshot_4.png', alt: 'Aunty Elewa Checkout Screen Mockup' },
               ].map((img, i) => (
                 <img
                   key={i}
                   src={img.src}
                   alt={img.alt}
                   style={{
-                    height: '420px',
-                    width: 'auto',
-                    borderRadius: '24px',
-                    boxShadow: '0 12px 36px rgba(0, 0, 0, 0.25)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    flexShrink: 0
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '16px',
+                    boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    display: 'block',
                   }}
                 />
               ))}
             </div>
+
+          ) : project.id === 'real-estate-os' ? (
+            /* ── REAL ESTATE OS — vertical stack on mobile, side-by-side on desktop ── */
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.5rem',
+              width: '100%',
+              maxWidth: '1200px',
+              padding: '1rem',
+            }}>
+              <img
+                src="/re_macbook.jpeg"
+                alt="MacBook Pro Operating System Mockup"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '16px',
+                  boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '1rem',
+                width: '100%',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+              }}>
+                <img
+                  src="/re_ipad.jpeg"
+                  alt="iPad Broker Dashboard Mockup"
+                  style={{
+                    flex: '1 1 260px',
+                    maxWidth: '420px',
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '16px',
+                    boxShadow: '0 20px 48px rgba(18, 18, 18, 0.12)',
+                    display: 'block',
+                  }}
+                />
+                <img
+                  src="/re_s26_isometric.png"
+                  alt="Samsung S26 Isometric Mobile Mockup"
+                  style={{
+                    flex: '0 1 180px',
+                    maxWidth: '220px',
+                    width: '100%',
+                    height: 'auto',
+                    filter: 'drop-shadow(0 20px 48px rgba(18, 18, 18, 0.08))',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            </div>
+
+          ) : project.id === 'greenlume' ? (
+            /* ── GREENLUME — swipeable horizontal rail, finger-friendly on mobile ── */
+            <div style={{ width: '100%', position: 'relative' }}>
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                width: '100%',
+                padding: '1.5rem 1.25rem 2rem',
+                scrollbarWidth: 'none',
+                WebkitOverflowScrolling: 'touch',
+                scrollSnapType: 'x mandatory',
+              }}>
+                {[
+                  { src: '/greenlume_1.jpg', alt: 'GreenLume App 1' },
+                  { src: '/greenlume_2.jpg', alt: 'GreenLume App 2' },
+                  { src: '/greenlume_3.jpg', alt: 'GreenLume App 3' },
+                  { src: '/greenlume_4.jpg', alt: 'GreenLume App 4' },
+                  { src: '/greenlume_5.jpg', alt: 'GreenLume App 5' },
+                  { src: '/greenlume_6.jpg', alt: 'GreenLume App 6' },
+                  { src: '/greenlume_7.jpg', alt: 'GreenLume App 7' },
+                  { src: '/greenlume_8.jpg', alt: 'GreenLume App 8' },
+                  { src: '/greenlume_9.jpg', alt: 'GreenLume App 9' },
+                  { src: '/greenlume_10.jpg', alt: 'GreenLume App 10' },
+                ].map((img, i) => (
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={img.alt}
+                    style={{
+                      height: 'clamp(240px, 55vw, 420px)',
+                      width: 'auto',
+                      maxWidth: 'calc(85vw - 2.5rem)',
+                      borderRadius: '20px',
+                      boxShadow: '0 12px 36px rgba(0, 0, 0, 0.3)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      flexShrink: 0,
+                      scrollSnapAlign: 'start',
+                      display: 'block',
+                    }}
+                  />
+                ))}
+              </div>
+              {/* Swipe hint label */}
+              <p style={{
+                textAlign: 'center',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '10px',
+                color: 'rgba(255,255,255,0.35)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                marginTop: '-0.5rem',
+                paddingBottom: '1rem',
+              }}>
+                ← swipe to explore →
+              </p>
+            </div>
+
           ) : (
             <ProjectVisual type={project.visualType} isHovered={true} />
           )}
@@ -575,6 +671,11 @@ export default function CaseStudyPage() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* ── IMPACT METRICS BAND ───────────────────────────── */}
+        {project.metrics && project.metrics.length > 0 && (
+          <MetricsBand metrics={project.metrics} />
         )}
 
         {/* Large Editorial Quotation block from the client */}

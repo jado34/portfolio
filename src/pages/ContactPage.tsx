@@ -2,19 +2,19 @@ import { useState } from 'react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', project: '', message: '' });
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'success' | 'validation_error' | 'submit_error'>('idle');
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      setSubmitStatus('error');
+      setSubmitStatus('validation_error');
       setTimeout(() => setSubmitStatus('idle'), 2500);
       return;
     }
 
     setSubmitStatus('sending');
 
-    fetch('https://formspree.io/designsbyblaze1@gmail.com', {
+    fetch('https://formspree.io/f/mykaqrzn', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,12 +33,12 @@ export default function ContactPage() {
           setFormData({ name: '', email: '', project: '', message: '' });
           setTimeout(() => setSubmitStatus('idle'), 3000);
         } else {
-          setSubmitStatus('error');
+          setSubmitStatus('submit_error');
           setTimeout(() => setSubmitStatus('idle'), 2500);
         }
       })
       .catch(() => {
-        setSubmitStatus('error');
+        setSubmitStatus('submit_error');
         setTimeout(() => setSubmitStatus('idle'), 2500);
       });
   };
@@ -89,6 +89,16 @@ export default function ContactPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <span style={{ fontSize: '10px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--text-muted)', width: '80px' }}>HQ Location</span>
               <span style={{ fontSize: '15px', color: 'var(--text-charcoal)', fontWeight: 500 }}>Lagos, Nigeria 🇳🇬</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <span style={{ fontSize: '10px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--text-muted)', width: '80px' }}>Resume</span>
+              <a
+                href="/Olawuwo Resume.pdf"
+                download
+                style={{ fontSize: '13px', color: 'var(--accent-rust)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '6px', borderBottom: '1px solid var(--accent-rust)', paddingBottom: '2px' }}
+              >
+                Download CV ↓
+              </a>
             </div>
           </div>
         </div>
@@ -158,15 +168,16 @@ export default function ContactPage() {
                 fontFamily: 'var(--font-mono)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                background: submitStatus === 'success' ? '#10b981' : submitStatus === 'error' ? '#ef4444' : undefined,
-                borderColor: submitStatus === 'success' || submitStatus === 'error' ? 'transparent' : undefined,
+                background: submitStatus === 'success' ? '#10b981' : (submitStatus === 'validation_error' || submitStatus === 'submit_error') ? '#ef4444' : undefined,
+                borderColor: submitStatus === 'success' || submitStatus === 'validation_error' || submitStatus === 'submit_error' ? 'transparent' : undefined,
               }}
               disabled={submitStatus === 'sending'}
             >
               {submitStatus === 'idle' && 'SEND MESSAGE ❯'}
               {submitStatus === 'sending' && 'SENDING MESSAGE...'}
               {submitStatus === 'success' && 'MESSAGE SENT ✓'}
-              {submitStatus === 'error' && 'FILL REQUIRED FIELDS ⚠'}
+              {submitStatus === 'validation_error' && 'FILL REQUIRED FIELDS ⚠'}
+              {submitStatus === 'submit_error' && 'SUBMISSION FAILED (CHECK EMAIL VERIFICATION) ⚠'}
             </button>
           </form>
         </div>

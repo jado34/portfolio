@@ -9,6 +9,8 @@ import CaseStudyPage from './pages/CaseStudy';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import Magnetic from './components/Magnetic';
+import CustomCursor from './components/CustomCursor';
+import PageTransition from './components/PageTransition';
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -51,18 +53,26 @@ function Header() {
       }}
     >
       <div className="container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link
-          to="/"
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '20px',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            color: 'var(--text-charcoal)',
-          }}
-        >
-          BLAZE DESIGNS.
-        </Link>
+        {/* Logo + availability badge group */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Link
+            to="/"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '20px',
+              fontWeight: 800,
+              letterSpacing: '-0.02em',
+              color: 'var(--text-charcoal)',
+            }}
+          >
+            BLAZE DESIGNS.
+          </Link>
+          {/* Available for work badge — desktop only */}
+          <span className="avail-badge desktop-only">
+            <span className="avail-dot" />
+            Available for Work
+          </span>
+        </div>
 
         {/* Desktop Navigation */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '3.5rem' }}>
@@ -149,6 +159,11 @@ function Header() {
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="btn-editorial" style={{ width: 'fit-content', marginTop: '2rem' }}>
             INQUIRE ↗
           </Link>
+          {/* Available for work badge — mobile drawer */}
+          <span className="avail-badge" style={{ marginTop: '0.5rem', width: 'fit-content' }}>
+            <span className="avail-dot" />
+            Available for Work
+          </span>
         </div>
       )}
     </header>
@@ -206,6 +221,12 @@ function Footer() {
 export default function App() {
   return (
     <RouterProvider>
+      {/* Custom Cursor (desktop only via CSS) */}
+      <CustomCursor />
+
+      {/* Page transition curtain */}
+      <PageTransition />
+
       {/* Visual Overlay texture */}
       <div className="noise-overlay" />
 
@@ -214,23 +235,23 @@ export default function App() {
 
       {/* Route Handlers rendering specific views */}
       <Route path="/" exact>
-        <HomePage />
+        <div className="page-content-enter"><HomePage /></div>
       </Route>
 
       <Route path="/services">
-        <ServicesPage />
+        <div className="page-content-enter"><ServicesPage /></div>
       </Route>
 
       <Route path="/work">
-        <CaseStudyPage />
+        <div className="page-content-enter"><CaseStudyPage /></div>
       </Route>
 
       <Route path="/about">
-        <AboutPage />
+        <div className="page-content-enter"><AboutPage /></div>
       </Route>
 
       <Route path="/contact">
-        <ContactPage />
+        <div className="page-content-enter"><ContactPage /></div>
       </Route>
 
       {/* Static Footer Shell */}

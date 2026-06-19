@@ -277,6 +277,27 @@ ul {
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children reveal */
+.reveal-child {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-i, 0) * 90ms);
+}
+
+.reveal-child.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Contact Inputs (Clean Editorial Lines) */
@@ -580,3 +601,261 @@ p, h1, h2, h3, h4, h5, li, span, a {
     height: 320px !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   AVAILABILITY BADGE
+═══════════════════════════════════════════════════════════ */
+.avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.08);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #059669;
+  white-space: nowrap;
+}
+
+.avail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  flex-shrink: 0;
+  animation: avail-pulse 2s ease-in-out infinite;
+}
+
+@keyframes avail-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROCESS / HOW I WORK TIMELINE
+═══════════════════════════════════════════════════════════ */
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--border-light);
+  z-index: 0;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.process-step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-rust);
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.process-step:hover .process-step-num {
+  background: var(--accent-rust);
+  color: #FAF8F5;
+  border-color: var(--accent-rust);
+  transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+  .process-timeline {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .process-timeline::before { display: none; }
+  .process-step { align-items: flex-start; text-align: left; flex-direction: row; gap: 1rem; }
+  .process-step-num { margin-bottom: 0; flex-shrink: 0; }
+}
+
+@media (max-width: 480px) {
+  .process-timeline { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   METRICS IMPACT BAND (Case Studies)
+═══════════════════════════════════════════════════════════ */
+.metrics-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--border-light);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFFFF;
+  margin: 5rem 0;
+}
+
+.metrics-cell {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metrics-cell:last-child { border-right: none; }
+
+.metrics-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-charcoal);
+  line-height: 1;
+}
+
+.metrics-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .metrics-band { grid-template-columns: 1fr; }
+  .metrics-cell { border-right: none; border-bottom: 1px solid var(--border-light); }
+  .metrics-cell:last-child { border-bottom: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM CURSOR  (only for devices with a precise pointer)
+═══════════════════════════════════════════════════════════ */
+@media (pointer: fine) {
+
+  /* Hide system cursor globally */
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+
+  /* Outer lagging ring */
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--accent-rust);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    /* Centre the ring on cursor position */
+    margin-left: -18px;
+    margin-top: -18px;
+    will-change: transform;
+    transition:
+      width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.3s ease,
+      border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cursor-ring--hovered {
+    width: 72px;
+    height: 72px;
+    margin-left: -36px;
+    margin-top: -36px;
+    background: rgba(208, 90, 63, 0.12);
+    border-color: var(--accent-rust);
+  }
+
+  .cursor-ring--click {
+    transform: scale(0.85) !important;
+  }
+
+  /* Contextual label inside ring */
+  .cursor-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-rust);
+    white-space: nowrap;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Inner instant dot */
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-rust);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
+    /* Centre the dot on cursor position */
+    margin-left: -3px;
+    margin-top: -3px;
+    will-change: transform;
+    transition: transform 0.05s linear;
+  }
+
+  .cursor-dot--click {
+    transform: scale(1.5) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE TRANSITION OVERLAY
+═══════════════════════════════════════════════════════════ */
+
+/* Fade-in for newly mounted page content */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content-enter {
+  animation: page-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+

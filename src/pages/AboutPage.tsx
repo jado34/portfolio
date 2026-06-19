@@ -1,12 +1,16 @@
-import { Layout, Cpu, Settings, Code } from 'lucide-react';
+import { Layout, Cpu, Settings, Code, Download } from 'lucide-react';
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 export default function AboutPage() {
+  const introRef = useScrollReveal<HTMLDivElement>();
+  const capsRef = useStaggerReveal<HTMLDivElement>();
+
   return (
     <div style={{ background: 'var(--bg-paper)', minHeight: '100vh', paddingTop: '120px', paddingBottom: '8rem' }}>
       <div className="container">
 
         {/* Intro */}
-        <div style={{ maxWidth: '950px', marginBottom: '5rem' }}>
+        <div ref={introRef} className="scroll-reveal" style={{ maxWidth: '950px', marginBottom: '5rem' }}>
           <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-rust)', fontWeight: 600 }}>
             ABOUT // THE ENGINEER
           </span>
@@ -135,7 +139,7 @@ export default function AboutPage() {
             </div>
 
             {/* Matrix of capabilities */}
-            <div className="about-caps-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div ref={capsRef} className="about-caps-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
               {[
                 { icon: <Layout size={18} />, title: 'Systems & Design Tokens', text: 'Architecting unified token pipelines linking design configurations directly to React/CSS variables.' },
                 { icon: <Settings size={18} />, title: 'Zero-Friction Flows', text: 'Designing custom single-page user workspaces that minimize clicks and maximize action.' },
@@ -144,6 +148,7 @@ export default function AboutPage() {
               ].map((cap, i) => (
                 <div
                   key={i}
+                  className="reveal-child"
                   style={{
                     background: '#FFFFFF',
                     border: '1.5px solid var(--border-light)',
@@ -158,9 +163,72 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
+            {/* CV Download Button */}
+            <a
+              href="/Olawuwo Resume.pdf"
+              download
+              className="btn-editorial-ghost"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '1rem', width: 'fit-content' }}
+            >
+              <Download size={13} />
+              Download CV
+            </a>
+          </div>
+        </div>
+
+        {/* ── HOW I WORK — Process Timeline ── */}
+        <section style={{ marginTop: '7rem', paddingTop: '5rem', borderTop: '1px solid var(--border-light)' }}>
+          <div style={{ marginBottom: '4rem' }}>
+            <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-rust)', fontWeight: 600 }}>
+              PROCESS // HOW I WORK
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: 'var(--text-charcoal)', letterSpacing: '-0.02em', marginTop: '0.75rem' }}>
+              From first principles to shipped product.
+            </h2>
           </div>
 
-        </div>
+          <div className="process-timeline">
+            {[
+              {
+                num: '01',
+                title: 'Discover',
+                text: 'User research, competitive landscape, and identifying the real friction point before touching any design tool.',
+              },
+              {
+                num: '02',
+                title: 'Define',
+                text: 'Architecture decisions, design principles, and clear constraints. Good constraints produce focused solutions.',
+              },
+              {
+                num: '03',
+                title: 'Design',
+                text: 'High-fidelity systems in Figma or Framer — design tokens, component libraries, and interactive prototypes.',
+              },
+              {
+                num: '04',
+                title: 'Build',
+                text: 'Clean React / TypeScript code with performance-first architecture. No bloat, no alignment friction.',
+              },
+              {
+                num: '05',
+                title: 'Ship',
+                text: 'Deploy, measure, iterate. The product is never done — it is continuously refined based on real usage.',
+              },
+            ].map((step) => (
+              <div key={step.num} className="process-step">
+                <div className="process-step-num">{step.num}</div>
+                <div>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 700, color: 'var(--text-charcoal)', marginBottom: '0.5rem' }}>
+                    {step.title}
+                  </h4>
+                  <p style={{ fontSize: '12.5px', color: 'var(--text-grey)', lineHeight: '1.65' }}>
+                    {step.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
       </div>
     </div>

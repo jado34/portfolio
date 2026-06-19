@@ -1,3 +1,9 @@
+export interface ProjectMetric {
+  value: string;
+  label: string;
+  prefix?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -9,6 +15,8 @@ export interface Project {
   gradient: string;
   visualType: 'chart' | 'audio' | 'tokens' | 'audit';
   needId: 'design-tokens' | 'high-performance' | 'optimization' | 'creative';
+  readingTimeMinutes: number;
+  metrics: ProjectMetric[];
 }
 
 export const projects: Project[] = [
@@ -22,7 +30,13 @@ export const projects: Project[] = [
     year: '2026',
     gradient: 'linear-gradient(135deg, #102a1e 0%, #1c4532 100%)',
     visualType: 'audit',
-    needId: 'design-tokens'
+    needId: 'design-tokens',
+    readingTimeMinutes: 8,
+    metrics: [
+      { value: '5', label: 'Systems synced per tap', prefix: '' },
+      { value: '48h', label: 'Plant wilt window (consequential loss)', prefix: '' },
+      { value: '100', label: 'Logging frequency preserved', prefix: '+' },
+    ],
   },
   {
     id: 'real-estate-os',
@@ -34,7 +48,13 @@ export const projects: Project[] = [
     year: '2025',
     gradient: '#FAF8F5',
     visualType: 'audit',
-    needId: 'high-performance'
+    needId: 'high-performance',
+    readingTimeMinutes: 6,
+    metrics: [
+      { value: '12+', label: 'Tools replaced by one surface', prefix: '' },
+      { value: '5s', label: 'Decision test — every screen passes', prefix: '<' },
+      { value: '0', label: 'Context switches required', prefix: '' },
+    ],
   },
   {
     id: 'gesture-audio',
@@ -46,7 +66,13 @@ export const projects: Project[] = [
     year: '2023',
     gradient: '#EDFAF0',
     visualType: 'audio',
-    needId: 'creative'
+    needId: 'creative',
+    readingTimeMinutes: 4,
+    metrics: [
+      { value: '60', label: 'FPS canvas rendering, zero jank', prefix: '' },
+      { value: '100', label: 'Gesture-responsive visual feedback', prefix: '' },
+      { value: '0', label: 'External animation libraries used', prefix: '' },
+    ],
   },
   {
     id: 'aunty-elewa',
@@ -58,6 +84,12 @@ export const projects: Project[] = [
     year: '2026',
     gradient: 'linear-gradient(135deg, #16120e 0%, #25170d 100%)',
     visualType: 'audit',
-    needId: 'high-performance'
-  }
+    needId: 'high-performance',
+    readingTimeMinutes: 7,
+    metrics: [
+      { value: '90', label: 'Reduction in WhatsApp DM overhead', prefix: '' },
+      { value: '45s', label: 'Complete plate checkout for office workers', prefix: '<' },
+      { value: '0', label: 'Cart shock — live additive pricing', prefix: '' },
+    ],
+  },
 ];

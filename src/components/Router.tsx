@@ -1,16 +1,23 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import type { ReactNode } from 'react';
+import gsap from 'gsap';
 
 interface RouterContextType {
   currentPath: string;
   navigate: (to: string) => void;
+  isTransitioning: boolean;
 }
 
 const RouterContext = createContext<RouterContextType | undefined>(undefined);
 
+// Expose a ref that PageTransition can attach its trigger to
+export const transitionTriggerRef = {
+  trigger: null as ((path: string) => void) | null,
+};
+
 export function RouterProvider({ children }: { children: ReactNode }) {
-  // Parse path, default to '/'
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -21,15 +28,31 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigate = (to: string) => {
+  const navigate = useCallback((to: string) => {
+    if (to === window.location.pathname) return;
+
+    // If a page transition is registered, delegate to it
+    if (transitionTriggerRef.trigger) {
+      transitionTriggerRef.trigger(to);
+    } else {
+      // Fallback: instant navigation
+      window.history.pushState(null, '', to);
+      setCurrentPath(to);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, []);
+
+  const commitNavigation = useCallback((to: string) => {
     window.history.pushState(null, '', to);
     setCurrentPath(to);
-    // Scroll to top on navigation to feel like a real page change
     window.scrollTo({ top: 0, behavior: 'auto' });
-  };
+  }, []);
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate }}>
+    <RouterContext.Provider value={{ currentPath, navigate, isTransitioning }}>
+      {/* Attach commitNavigation so PageTransition can call it mid-animation */}
+      {typeof window !== 'undefined' &&
+        ((window as unknown as Record<string, unknown>).__blazeCommitNav = commitNavigation)}
       {children}
     </RouterContext.Provider>
   );
