@@ -763,79 +763,94 @@ p, h1, h2, h3, h4, h5, li, span, a {
     cursor: none !important;
   }
 
-  /* Outer lagging ring */
+  /* ── Outer lagging ring ── */
   .cursor-ring {
     position: fixed;
     top: 0;
     left: 0;
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid var(--accent-rust);
+    /* Default: 24px tight ring */
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    margin-top: -12px;
+    border: 1px solid rgba(18, 18, 18, 0.55);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    /* Centre the ring on cursor position */
-    margin-left: -18px;
-    margin-top: -18px;
     will-change: transform;
-    transition:
-      width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-      height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-      background 0.3s ease,
-      border-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: transparent;
+    transition:
+      width  0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      margin 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.2s ease,
+      border-color 0.2s ease,
+      opacity 0.2s ease;
   }
 
+  /* Hover state: expand to 48px, semi-transparent charcoal fill */
   .cursor-ring--hovered {
-    width: 72px;
-    height: 72px;
-    margin-left: -36px;
-    margin-top: -36px;
-    background: rgba(208, 90, 63, 0.12);
-    border-color: var(--accent-rust);
+    width: 48px;
+    height: 48px;
+    margin-left: -24px;
+    margin-top: -24px;
+    background: rgba(18, 18, 18, 0.06);
+    border-color: rgba(18, 18, 18, 0.7);
   }
 
+  /* Click: shrink ring for tactile feedback */
   .cursor-ring--click {
-    transform: scale(0.85) !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-left: -8px !important;
+    margin-top: -8px !important;
+    background: rgba(18, 18, 18, 0.15) !important;
   }
 
-  /* Contextual label inside ring */
+  /* ── Contextual label inside ring ── */
   .cursor-label {
     font-family: var(--font-mono);
-    font-size: 8px;
+    font-size: 7px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent-rust);
+    color: rgba(18, 18, 18, 0.75);
     white-space: nowrap;
     text-align: center;
     pointer-events: none;
     user-select: none;
   }
 
-  /* Inner instant dot */
+  /* ── Inner instant dot ── */
   .cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
-    width: 6px;
-    height: 6px;
-    background: var(--accent-rust);
+    width: 4px;
+    height: 4px;
+    background: #121212;
     border-radius: 50%;
     pointer-events: none;
     z-index: 100000;
-    /* Centre the dot on cursor position */
-    margin-left: -3px;
-    margin-top: -3px;
+    margin-left: -2px;
+    margin-top: -2px;
     will-change: transform;
-    transition: transform 0.05s linear;
+    transition: transform 0.06s linear, opacity 0.15s ease;
   }
 
+  /* On hover: dot fades out (ring takes over focus) */
+  .cursor-dot--hovered {
+    opacity: 0;
+  }
+
+  /* On click: dot pulses slightly */
   .cursor-dot--click {
-    transform: scale(1.5) !important;
+    transform: scale(2.5) !important;
+    opacity: 0.4 !important;
   }
 }
 

@@ -17,7 +17,7 @@ export default function CustomCursor() {
   useEffect(() => {
     // Smooth ring follow loop
     const animate = () => {
-      const lerpFactor = 0.1; // ring follows with lag
+      const lerpFactor = 0.12; // slightly crisper follow for smaller ring
       ringPos.current.x += (mousePos.current.x - ringPos.current.x) * lerpFactor;
       ringPos.current.y += (mousePos.current.y - ringPos.current.y) * lerpFactor;
 
@@ -132,7 +132,7 @@ export default function CustomCursor() {
       {/* Inner instant dot */}
       <div
         ref={dotRef}
-        className="cursor-dot"
+        className={`cursor-dot ${isHovered ? 'cursor-dot--hovered' : ''}`}
         aria-hidden="true"
       />
     </>
